@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZapEstoque — o estoque que se atualiza pelo WhatsApp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tinta:#14231C;
+    --papel:#F3F5F0;
+    --painel:#FFFFFF;
+    --verde:#1F7A4D;
+    --verde-escuro:#155538;
+    --verde-bolha:#DCF3E4;
+    --coral:#E2483B;
+    --ambar:#E3A315;
+    --linha:#E1E4DD;
+    --cinza:#6B7570;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--papel); color:var(--tinta);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  .display{font-family:'Archivo Black', sans-serif; text-transform:uppercase;}
+  .mono{font-family:'Space Mono', monospace;}
+
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 5vw; border-bottom:1px solid var(--linha); background:var(--painel);
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo .ponto{width:10px; height:10px; border-radius:50%; background:var(--verde);}
+  .logo span.display{font-size:1.05rem; letter-spacing:.01em;}
+  header .tag{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);
+    letter-spacing:.06em; text-transform:uppercase;
+  }
+
+  .hero{padding:6vh 5vw 3vh; max-width:900px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:.75rem; color:var(--verde-escuro);
+    letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .eyebrow::before{content:''; width:20px; height:1px; background:var(--verde-escuro);}
+  .hero h1{font-size:clamp(1.9rem,3.6vw,3rem); line-height:1.05; max-width:16ch;}
+  .hero h1 .destaque{color:var(--verde);}
+  .hero p{margin-top:16px; color:var(--cinza); max-width:56ch; font-size:1.02rem;}
+
+  .resumo{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1px; background:var(--linha); border:1px solid var(--linha);
+    margin:4vh 5vw 0;
+  }
+  .stat{background:var(--painel); padding:22px 20px;}
+  .stat .rotulo{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-transform:uppercase; letter-spacing:.08em;}
+  .stat .valor{font-family:'Archivo Black',sans-serif; font-size:2rem; margin-top:6px;}
+  .stat.alerta .valor{color:var(--coral);}
+  .stat.ok .valor{color:var(--verde);}
+
+  .principal{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:26px;
+    padding:4vh 5vw 6vh; align-items:start;
+  }
+  @media (max-width:900px){ .principal{grid-template-columns:1fr;} }
+
+  .painel-box{background:var(--painel); border:1px solid var(--linha); border-radius:10px; overflow:hidden;}
+  .painel-header{
+    padding:16px 20px; border-bottom:1px solid var(--linha);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .painel-header h3{font-family:'Space Mono',monospace; font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--tinta);}
+
+  .chat-wrap{background:var(--verde-escuro); position:relative;}
+  .chat-header{
+    background:var(--verde); color:#fff; padding:14px 20px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .avatar-loja{
+    width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .chat-header .nome{font-weight:700; font-size:.95rem;}
+  .chat-header .status{font-family:'Space Mono',monospace; font-size:.68rem; opacity:.85;}
+
+  .chat-body{
+    padding:20px; min-height:360px; max-height:420px; overflow-y:auto;
+    display:flex; flex-direction:column; gap:10px;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .bolha{
+    max-width:80%; padding:9px 13px; border-radius:10px; font-size:.9rem;
+    align-self:flex-end; background:var(--verde-bolha); color:var(--tinta);
+    box-shadow:0 2px 6px rgba(0,0,0,.15); animation:entra .25s ease;
+  }
+  .bolha.sistema{
+    align-self:center; background:rgba(255,255,255,.14); color:#fff;
+    font-family:'Space Mono',monospace; font-size:.72rem; text-align:center;
+    padding:6px 12px; border-radius:20px;
+  }
+  .bolha .hora{display:block; font-family:'Space Mono',monospace; font-size:.62rem; opacity:.55; margin-top:4px; text-align:right;}
+  @keyframes entra{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .onda{display:flex; align-items:center; gap:3px; height:18px; margin-right:4px;}
+  .onda span{width:3px; background:var(--verde-escuro); border-radius:2px; animation:pulsa 1s infinite ease-in-out;}
+  .onda span:nth-child(1){height:6px; animation-delay:0s;}
+  .onda span:nth-child(2){height:14px; animation-delay:.1s;}
+  .onda span:nth-child(3){height:9px; animation-delay:.2s;}
+  .onda span:nth-child(4){height:16px; animation-delay:.3s;}
+  .onda span:nth-child(5){height:7px; animation-delay:.4s;}
+  @keyframes pulsa{0%,100%{transform:scaleY(.5);} 50%{transform:scaleY(1);}}
+
+  .transcrevendo{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--verde-escuro); opacity:.8;
+    display:flex; align-items:center; gap:6px;
+  }
+  .transcrevendo .pontinhos::after{content:'...'; animation:pontos 1.2s steps(4) infinite;}
+  @keyframes pontos{0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';}}
+
+  .audios-rapidos{
+    padding:12px 16px; background:rgba(255,255,255,.06); display:flex; gap:8px; flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .btn-audio{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.9); color:var(--tinta); border:none; border-radius:20px;
+    padding:8px 14px; font-family:'Space Mono',monospace; font-size:.72rem; cursor:pointer;
+    transition:transform .15s;
+  }
+  .btn-audio:hover{transform:translateY(-1px); background:#fff;}
+  .btn-audio:disabled{opacity:.4; cursor:default; transform:none;}
+
+  .chat-input{
+    display:flex; gap:10px; padding:14px 16px; background:var(--painel);
+  }
+  .chat-input input{
+    flex:1; border:1px solid var(--linha); border-radius:20px; padding:11px 16px;
+    font-family:'Work Sans',sans-serif; font-size:.9rem; outline:none;
+  }
+  .chat-input input:focus{border-color:var(--verde);}
+  .chat-input button{
+    background:var(--verde); color:#fff; border:none; border-radius:50%;
+    width:42px; height:42px; font-size:1.1rem; cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:background .2s;
+  }
+  .chat-input button:hover{background:var(--verde-escuro);}
+  .dica-input{
+    font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
+    padding:0 16px 14px;
+  }
+
+  .tabela-estoque{width:100%; border-collapse:collapse;}
+  .tabela-estoque th{
+    text-align:left; font-family:'Space Mono',monospace; font-size:.66rem; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--cinza); padding:10px 20px; border-bottom:1px solid var(--linha);
+  }
+  .tabela-estoque td{padding:12px 20px; border-bottom:1px solid var(--linha); font-size:.88rem;}
+  .tabela-estoque tr:last-child td{border-bottom:none;}
+  .tabela-estoque tr.linha-alerta{background:rgba(226,72,59,0.06);}
+  .qtd{font-family:'Space Mono',monospace; font-weight:700;}
+  .qtd.baixa{color:var(--coral);}
+  .qtd.ok{color:var(--verde-escuro);}
+  .badge-status{
+    font-family:'Space Mono',monospace; font-size:.64rem; font-weight:700; padding:4px 9px;
+    border-radius:20px; white-space:nowrap;
+  }
+  .badge-ruptura{background:var(--coral); color:#fff;}
+  .badge-normal{background:rgba(31,122,77,.12); color:var(--verde-escuro);}
+  .flash{animation:piscaLinha 1s ease;}
+  @keyframes piscaLinha{0%{background:rgba(227,163,21,0.35);} 100%{background:transparent;}}
+
+  .log-alertas{padding:14px 20px; max-height:150px; overflow-y:auto; border-top:1px solid var(--linha);}
+  .log-alertas .item-log{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--coral);
+    padding:5px 0; border-bottom:1px dashed var(--linha);
+  }
+  .log-alertas .vazio{font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);}
+
+  footer{
+    border-top:1px solid var(--linha); padding:5vh 5vw 5vh; background:var(--painel);
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:700px){ footer{grid-template-columns:1fr;} }
+  footer h4{font-family:'Space Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--verde-escuro); margin-bottom:12px;}
+  .equipe-item{font-size:.88rem; padding:7px 0; border-bottom:1px dashed var(--linha); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .equipe-item span{color:var(--cinza); font-family:'Space Mono',monospace; font-size:.76rem;}
+  footer .links a{display:block; margin-bottom:8px; font-family:'Space Mono',monospace; font-size:.82rem; text-decoration:none; color:var(--tinta);}
+  footer .links a:hover{color:var(--verde);}
+  .creditos{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-align:center; padding-bottom:30px;}
+
+  :focus-visible{outline:2px solid var(--verde); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span class="ponto"></span><span class="display">ZapEstoque</span></div>
+  <div class="tag">AppJam Expoagas 2026</div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">IA aplicada ao varejo · Automação</div>
+  <h1 class="display">O estoque que se atualiza <span class="destaque">pelo whatsapp</span></h1>
+  <p>Sem app novo, sem câmera cara. O funcionário manda mensagem de texto ou áudio do jeito que já manda todo dia — a IA entende produto, quantidade e se é entrada ou saída, e o estoque se atualiza sozinho.</p>
+</div>
+
+<div class="resumo" id="resumo">
+  <div class="stat"><div class="rotulo">Mensagens processadas</div><div class="valor" id="stat-msgs">0</div></div>
+  <div class="stat ok"><div class="rotulo">Itens normais</div><div class="valor" id="stat-ok">8</div></div>
+  <div class="stat alerta"><div class="rotulo">Alertas de ruptura</div><div class="valor" id="stat-alertas">0</div></div>
+  <div class="stat"><div class="rotulo">Produtos monitorados</div><div class="valor">8</div></div>
+</div>
+
+<div class="principal">
+
+  <div class="painel-box chat-wrap">
+    <div class="chat-header">
+      <div class="avatar-loja">🏪</div>
+      <div>
+        <div class="nome">Mercado do Zé — Estoque</div>
+        <div class="status">online · assistente de estoque</div>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chat-body"></div>
+
+    <div class="audios-rapidos">
+      <button class="btn-audio" data-audio="0">🎙️ Áudio: "chegou 5kg de arroz"</button>
+      <button class="btn-audio" data-audio="1">🎙️ Áudio: "acabou o leite"</button>
+      <button class="btn-audio" data-audio="2">🎙️ Áudio: "sobrou só 2kg de açúcar"</button>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="input-msg" placeholder='Digite ex: "chegou 1kg de arroz"' maxlength="80">
+      <button id="btn-enviar" aria-label="Enviar">➤</button>
+    </div>
+    <div class="dica-input">dica: use "chegou/reposição" pra entrada e "acabou/sobrou só/vendeu" pra saída — ex: "vendeu 3un de leite"</div>
+  </div>
+
+  <div class="painel-box">
+    <div class="painel-header"><h3>Estoque em tempo real</h3></div>
+    <table class="tabela-estoque">
+      <thead>
+        <tr><th>Produto</th><th>Qtd.</th><th>Status</th></tr>
+      </thead>
+      <tbody id="tabela-body"></tbody>
+    </table>
+    <div class="log-alertas" id="log-alertas">
+      <div class="vazio">Nenhum alerta gerado ainda.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>
+    <h4>Equipe</h4>
+    <div class="equipe-item">Nome do integrante 1 <span>email@exemplo.com</span></div>
+    <div class="equipe-item">Nome do integrante 2 <span>email@exemplo.com</span></div>
+    <div class="equipe-item">Nome do integrante 3 <span>email@exemplo.com</span></div>
+  </div>
+  <div class="links">
+    <h4>Projeto</h4>
+    <a href="#">Repositório no GitHub →</a>
+    <a href="#">Aplicação publicada (GitHub Pages) →</a>
+    <a href="#">AppJam Expoagas 2026 →</a>
+  </div>
+</footer>
+<div class="creditos">ZapEstoque — protótipo construído para a AppJam Expoagas 2026</div>
+
+<script>
+const estoque = {
+  "arroz":     {nome:"Arroz Tipo 1",      qtd:10, unidade:"kg", minimo:5},
+  "feijao":    {nome:"Feijão Preto",      qtd:8,  unidade:"kg", minimo:4},
+  "acucar":    {nome:"Açúcar Refinado",   qtd:6,  unidade:"kg", minimo:5},
+  "oleo":      {nome:"Óleo de Soja",      qtd:12, unidade:"L",  minimo:6},
+  "leite":     {nome:"Leite Integral",    qtd:15, unidade:"un", minimo:6},
+  "cafe":      {nome:"Café Torrado",      qtd:5,  unidade:"kg", minimo:3},
+  "papel":     {nome:"Papel Higiênico",   qtd:20, unidade:"un", minimo:8},
+  "detergente":{nome:"Detergente",        qtd:18, unidade:"un", minimo:8},
+};
+
+const apelidos = {
+  "arroz":"arroz",
+  "feijao":"feijao", "feijão":"feijao",
+  "acucar":"acucar", "açucar":"acucar", "açúcar":"acucar",
+  "oleo":"oleo", "óleo":"oleo",
+  "leite":"leite",
+  "cafe":"cafe", "café":"cafe",
+  "papel":"papel", "papelhigienico":"papel", "papel higienico":"papel", "papel higiênico":"papel",
+  "detergente":"detergente",
+};
+
+let totalMsgs = 0;
+const logAlertasEl = document.getElementById("log-alertas");
+const chatBody = document.getElementById("chat-body");
+
+function normalizar(txt){
+  return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+}
+
+function interpretarMensagem(textoOriginal){
+  const txt = normalizar(textoOriginal);
+
+  let acao = null;
+  if(/\b(chegou|chegaram|reposicao|recebido|recebemos|entrou|entraram)\b/.test(txt)) acao = "entrada";
+  if(/\b(acabou|acabaram|vendeu|vendemos|sobrou|saiu|sairam)\b/.test(txt)) acao = "saida";
+  if(acao === null) acao = "saida";
+
+  const matchQtd = txt.match(/(\d+[.,]?\d*)\s*(kg|un|l|litros?|unidades?|pacotes?)?/);
+  let quantidade = matchQtd ? parseFloat(matchQtd[1].replace(",",".")) : null;
+
+  const zerou = /\bacabou\b/.test(txt) && quantidade === null;
+
+  let chaveProduto = null;
+  for(const apelido in apelidos){
+    if(txt.includes(normalizar(apelido))){
+      chaveProduto = apelidos[apelido];
+      break;
+    }
+  }
+
+  return {chaveProduto, quantidade, acao, zerou};
+}
+
+function aplicarNoEstoque(interpretacao){
+  const {chaveProduto, quantidade, acao, zerou} = interpretacao;
+  if(!chaveProduto || !estoque[chaveProduto]) return null;
+
+  const item = estoque[chaveProduto];
+  if(zerou){
+    item.qtd = 0;
+  } else if(quantidade !== null){
+    item.qtd = acao === "entrada" ? item.qtd + quantidade : Math.max(0, item.qtd - quantidade);
+  }
+  return item;
+}
+
+function renderTabela(destacarChave){
+  const tbody = document.getElementById("tabela-body");
+  tbody.innerHTML = Object.entries(estoque).map(([chave, item])=>{
+    const emRisco = item.qtd <= item.minimo;
+    return `
+    <tr class="${emRisco ? 'linha-alerta':''} ${chave===destacarChave ? 'flash':''}">
+      <td>${item.nome}</td>
+      <td class="qtd ${emRisco?'baixa':'ok'}">${item.qtd} ${item.unidade}</td>
+      <td><span class="badge-status ${emRisco?'badge-ruptura':'badge-normal'}">${emRisco?'⚠ risco de ruptura':'ok'}</span></td>
+    </tr>`;
+  }).join("");
+
+  const emRiscoCount = Object.values(estoque).filter(i=>i.qtd <= i.minimo).length;
+  document.getElementById("stat-alertas").textContent = emRiscoCount;
+  document.getElementById("stat-ok").textContent = Object.keys(estoque).length - emRiscoCount;
+}
+
+function registrarAlerta(item){
+  if(logAlertasEl.querySelector(".vazio")) logAlertasEl.innerHTML = "";
+  const linha = document.createElement("div");
+  linha.className = "item-log";
+  const agora = new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
+  linha.textContent = `⚠ ${agora} — ${item.nome} em risco de ruptura (${item.qtd} ${item.unidade})`;
+  logAlertasEl.prepend(linha);
+}
+
+function horaAgora(){
+  return new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
+}
+
+function adicionarBolhaUsuario(texto){
+  const div = document.createElement("div");
+  div.className = "bolha";
+  div.innerHTML = `${texto}<span class="hora">${horaAgora()}</span>`;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function adicionarBolhaSistema(texto){
+  const div = document.createElement("div");
+  div.className = "bolha sistema";
+  div.textContent = texto;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function processarMensagem(textoOriginal){
+  adicionarBolhaUsuario(textoOriginal);
+
+  const pensando = document.createElement("div");
+  pensando.className = "bolha sistema transcrevendo";
+  pensando.innerHTML = `IA interpretando<span class="pontinhos"></span>`;
+  chatBody.appendChild(pensando);
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  setTimeout(()=>{
+    pensando.remove();
+    const interpretacao = interpretarMensagem(textoOriginal);
+    const item = aplicarNoEstoque(interpretacao);
+
+    if(!item){
+      adicionarBolhaSistema("❓ Não consegui identificar o produto nessa mensagem.");
+    } else {
+      const acaoTexto = interpretacao.acao === "entrada" ? "entrada" : "saída";
+      adicionarBolhaSistema(`✅ Estoque atualizado: ${item.nome} → ${item.qtd} ${item.unidade} (${acaoTexto})`);
+      renderTabela(Object.keys(estoque).find(k=>estoque[k]===item));
+      if(item.qtd <= item.minimo){
+        registrarAlerta(item);
+      }
+    }
+
+    totalMsgs++;
+    document.getElementById("stat-msgs").textContent = totalMsgs;
+  }, 700);
+}
+
+const inputMsg = document.getElementById("input-msg");
+document.getElementById("btn-enviar").addEventListener("click", enviarTexto);
+inputMsg.addEventListener("keydown", e=>{ if(e.key === "Enter") enviarTexto(); });
+
+function enviarTexto(){
+  const texto = inputMsg.value.trim();
+  if(!texto) return;
+  processarMensagem(texto);
+  inputMsg.value = "";
+}
+
+const audiosPreProntos = [
+  "chegou 5kg de arroz",
+  "acabou o leite",
+  "sobrou só 2kg de açúcar",
+];
+
+document.querySelectorAll(".btn-audio").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const idx = btn.dataset.audio;
+    const textoFinal = audiosPreProntos[idx];
+    btn.disabled = true;
+
+    const bolhaOnda = document.createElement("div");
+    bolhaOnda.className = "bolha";
+    bolhaOnda.innerHTML = `<div class="onda"><span></span><span></span><span></span><span></span><span></span></div>`;
+    chatBody.appendChild(bolhaOnda);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    setTimeout(()=>{
+      bolhaOnda.remove();
+      processarMensagem(textoFinal);
+      setTimeout(()=>{ btn.disabled = false; }, 900);
+    }, 900);
+  });
+});
+
+renderTabela(null);
+adicionarBolhaSistema("Assistente de estoque pronto. Mande texto ou toque num áudio de exemplo abaixo ↓");
+</script>
+</body>
+</html>
