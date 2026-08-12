@@ -7,593 +7,577 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
- :root{
- --tinta:#14231C;
- --papel:#F3F5F0;
- --painel:#FFFFFF;
- --verde:#1F7A4D;
- --verde-escuro:#155538;
- --verde-bolha:#DCF3E4;
- --coral:#E2483B;
- --ambar:#E3A315;
- --linha:#E1E4DD;
- --cinza:#6B7570;
- --expo-ciano:#00A0B0;
- --expo-azul:#0077A3;
- --expo-claro:#E0F4F5;
- }
- *{box-sizing:border-box; margin:0; padding:0;}
- body{
- background:var(--papel); color:var(--tinta);
- font-family:'Work Sans', sans-serif;
- line-height:1.5;
- }
- .display{font-family:'Archivo Black', sans-serif; text-transform:uppercase;}
- .mono{font-family:'Space Mono', monospace;}
+  :root{
+    --tinta:#14231C;
+    --papel:#F3F5F0;
+    --painel:#FFFFFF;
+    --verde:#1F7A4D;
+    --verde-escuro:#155538;
+    --verde-bolha:#DCF3E4;
+    --coral:#E2483B;
+    --ambar:#E3A315;
+    --linha:#E1E4DD;
+    --cinza:#6B7570;
+    --expo-ciano:#00A0B0;
+    --expo-azul:#0077A3;
+    --expo-claro:#E0F4F5;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--papel); color:var(--tinta);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  .display{font-family:'Archivo Black', sans-serif; text-transform:uppercase;}
+  .mono{font-family:'Space Mono', monospace;}
 
- header{
- display:flex; justify-content:space-between; align-items:center;
- padding:20px 5vw; border-bottom:1px solid var(--linha); background:var(--painel);
- }
- .logo{display:flex; align-items:center; gap:10px;}
- .logo .ponto{width:10px; height:10px; border-radius:50%; background:var(--verde);}
- .logo span.display{font-size:1.05rem; letter-spacing:.01em;}
- header .tag{
- font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);
- letter-spacing:.06em; text-transform:uppercase;
- }
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 5vw; border-bottom:1px solid var(--linha); background:var(--painel);
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo .ponto{width:10px; height:10px; border-radius:50%; background:var(--verde);}
+  .logo span.display{font-size:1.05rem; letter-spacing:.01em;}
+  header .tag{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);
+    letter-spacing:.06em; text-transform:uppercase;
+  }
 
- .hero{padding:6vh 5vw 3vh; max-width:900px;}
- .eyebrow{
- font-family:'Space Mono',monospace; font-size:.75rem; color:var(--verde-escuro);
- letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:16px;
- }
- .eyebrow::before{content:''; width:20px; height:1px; background:var(--verde-escuro);}
- .eyebrow.ciano{color:var(--expo-azul);}
- .eyebrow.ciano::before{background:var(--expo-ciano);}
- .hero h1{font-size:clamp(1.9rem,3.6vw,3rem); line-height:1.05; max-width:16ch;}
- .hero h1 .destaque{color:var(--verde);}
- .hero p{margin-top:16px; color:var(--cinza); max-width:56ch; font-size:1.02rem;}
+  .hero{padding:6vh 5vw 3vh; max-width:900px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:.75rem; color:var(--verde-escuro);
+    letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:16px;
+  }
+  .eyebrow::before{content:''; width:20px; height:1px; background:var(--verde-escuro);}
+  .eyebrow.ciano{color:var(--expo-azul);}
+  .eyebrow.ciano::before{background:var(--expo-ciano);}
+  .hero h1{font-size:clamp(1.9rem,3.6vw,3rem); line-height:1.05; max-width:16ch;}
+  .hero h1 .destaque{color:var(--verde);}
+  .hero p{margin-top:16px; color:var(--cinza); max-width:56ch; font-size:1.02rem;}
 
- .como-usar{
- padding:3vh 5vw 0; max-width:1000px;
- }
- .passos-uso{
- display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;
- margin-top:18px;
- }
- .passo-uso{
- background:var(--painel); border:1px solid var(--linha); border-radius:10px;
- padding:18px; text-align:center; position:relative;
- transition:transform .2s, box-shadow .2s;
- }
- .passo-uso:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.08);}
- .passo-numero{
- width:36px; height:36px; border-radius:50%;
- background:linear-gradient(135deg, var(--expo-ciano), var(--expo-azul));
- color:#fff; font-family:'Space Mono',monospace; font-size:.85rem; font-weight:700;
- display:flex; align-items:center; justify-content:center;
- margin:0 auto 12px;
- }
- .passo-icone{font-size:1.6rem; margin-bottom:8px;}
- .passo-titulo{font-weight:700; font-size:.92rem; margin-bottom:4px;}
- .passo-texto{font-size:.82rem; color:var(--cinza); line-height:1.45;}
+  .como-usar{
+    padding:3vh 5vw 0; max-width:1000px;
+  }
+  .passos-uso{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px;
+    margin-top:18px;
+  }
+  .passo-uso{
+    background:var(--painel); border:1px solid var(--linha); border-radius:10px;
+    padding:18px; text-align:center; position:relative;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .passo-uso:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.08);}
+  .passo-numero{
+    width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(135deg, var(--expo-ciano), var(--expo-azul));
+    color:#fff; font-family:'Space Mono',monospace; font-size:.85rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 12px;
+  }
+  .passo-titulo{font-weight:700; font-size:.92rem; margin-bottom:4px;}
+  .passo-texto{font-size:.82rem; color:var(--cinza); line-height:1.45;}
 
- .problema{padding:4vh 5vw 0; max-width:1000px;}
- .problema-cabecalho p{color:var(--cinza); max-width:60ch; margin-top:10px; font-size:.96rem;}
- .problema-grid{
- display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;
- margin-top:22px;
- }
- .problema-item{
- background:var(--painel); border:1px solid var(--linha); border-left:3px solid var(--coral);
- border-radius:8px; padding:16px 18px;
- }
- .problema-valor{font-family:'Archivo Black',sans-serif; font-size:1.7rem; color:var(--coral);}
- .problema-desc{font-size:.84rem; color:var(--cinza); margin-top:6px; line-height:1.45;}
- .problema-fonte{
- font-family:'Space Mono',monospace; font-size:.65rem; color:var(--cinza);
- margin-top:8px; opacity:.7;
- }
+  .problema{padding:2vh 5vw 0; max-width:1000px;}
+  .problema-cabecalho p{color:var(--cinza); max-width:60ch; margin-top:10px; font-size:.96rem;}
+  .problema-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px;
+    margin-top:22px;
+  }
+  .problema-item{
+    background:var(--painel); border:1px solid var(--linha); border-left:3px solid var(--coral);
+    border-radius:8px; padding:16px 18px;
+  }
+  .problema-valor{font-family:'Archivo Black',sans-serif; font-size:1.7rem; color:var(--coral);}
+  .problema-desc{font-size:.84rem; color:var(--cinza); margin-top:6px; line-height:1.45;}
+  .problema-fonte{
+    font-family:'Space Mono',monospace; font-size:.65rem; color:var(--cinza);
+    margin-top:8px; opacity:.7;
+  }
 
- .resumo{
- display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
- gap:1px; background:var(--linha); border:1px solid var(--linha);
- margin:4vh 5vw 0;
- }
- .stat{background:var(--painel); padding:22px 20px;}
- .stat .rotulo{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-transform:uppercase; letter-spacing:.08em;}
- .stat .valor{font-family:'Archivo Black',sans-serif; font-size:2rem; margin-top:6px;}
- .stat.alerta .valor{color:var(--coral);}
- .stat.ok .valor{color:var(--verde);}
+  .resumo{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1px; background:var(--linha); border:1px solid var(--linha);
+    margin:4vh 5vw 0;
+  }
+  .stat{background:var(--painel); padding:22px 20px;}
+  .stat .rotulo{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-transform:uppercase; letter-spacing:.08em;}
+  .stat .valor{font-family:'Archivo Black',sans-serif; font-size:2rem; margin-top:6px;}
+  .stat.alerta .valor{color:var(--coral);}
+  .stat.ok .valor{color:var(--verde);}
 
- .fluxo-ia{padding:4vh 5vw 0; max-width:1000px;}
- .fluxo-passos{
- display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:14px;
- align-items:stretch; margin-top:20px;
- }
- @media (max-width:900px){
- .fluxo-passos{grid-template-columns:1fr; }
- .fluxo-seta{transform:rotate(90deg); margin:2px 0;}
- }
- .fluxo-passo{
- background:var(--painel); border:1px solid var(--linha); border-radius:10px;
- padding:16px; position:relative;
- }
- .fluxo-num{
- font-family:'Space Mono',monospace; font-size:.66rem; color:#fff; background:var(--verde);
- width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;
- position:absolute; top:-9px; left:14px;
- }
- .fluxo-icone{font-size:1.4rem; margin-bottom:6px;}
- .fluxo-titulo{font-weight:700; font-size:.9rem; margin-bottom:4px;}
- .fluxo-texto{font-size:.78rem; color:var(--cinza); line-height:1.4;}
- .fluxo-seta{
- display:flex; align-items:center; justify-content:center; color:var(--verde);
- font-size:1.2rem; font-weight:700;
- }
+  .fluxo-ia{padding:4vh 5vw 0; max-width:1000px;}
+  .fluxo-passos{
+    display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:14px;
+    align-items:stretch; margin-top:20px;
+  }
+  @media (max-width:900px){
+    .fluxo-passos{grid-template-columns:1fr; }
+    .fluxo-seta{transform:rotate(90deg); margin:2px 0;}
+  }
+  .fluxo-passo{
+    background:var(--painel); border:1px solid var(--linha); border-radius:10px;
+    padding:16px; position:relative;
+  }
+  .fluxo-num{
+    font-family:'Space Mono',monospace; font-size:.66rem; color:#fff; background:var(--verde);
+    width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    position:absolute; top:-9px; left:14px;
+  }
+  .fluxo-icone{font-size:1.4rem; margin-bottom:6px;}
+  .fluxo-titulo{font-weight:700; font-size:.9rem; margin-bottom:4px;}
+  .fluxo-texto{font-size:.78rem; color:var(--cinza); line-height:1.4;}
+  .fluxo-seta{
+    display:flex; align-items:center; justify-content:center; color:var(--verde);
+    font-size:1.2rem; font-weight:700;
+  }
 
- .config-loja{
- display:grid; grid-template-columns:1fr 1.4fr; gap:20px;
- padding:4vh 5vw 0; align-items:start;
- }
- @media (max-width:900px){ .config-loja{grid-template-columns:1fr;} }
- .config-card .config-corpo{padding:18px 20px 22px;}
- .rotulo-campo{
- display:block; font-family:'Space Mono',monospace; font-size:.66rem; color:var(--cinza);
- text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;
- }
- .config-corpo input[type="text"], .config-corpo input[type="number"], .config-corpo select{
- width:100%; border:1px solid var(--linha); border-radius:6px; padding:9px 12px;
- font-family:'Work Sans',sans-serif; font-size:.88rem; outline:none; background:#fff; color:var(--tinta);
- }
- .config-corpo input:focus, .config-corpo select:focus{border-color:var(--verde);}
- .linha-config{display:flex; gap:10px; align-items:flex-end;}
- .linha-config + .linha-config{margin-top:12px;}
- .linha-tripla{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:12px; align-items:end;}
- .btn-config{
- background:var(--verde); color:#fff; border:none; border-radius:6px;
- padding:9px 16px; font-family:'Space Mono',monospace; font-size:.78rem; font-weight:700;
- cursor:pointer; white-space:nowrap; transition:background .2s;
- }
- .btn-config:hover{background:var(--verde-escuro);}
- .btn-config-full{width:100%; margin-top:14px; padding:11px;}
+  .config-loja{
+    display:grid; grid-template-columns:1fr 1.4fr; gap:20px;
+    padding:4vh 5vw 0; align-items:start;
+  }
+  @media (max-width:900px){ .config-loja{grid-template-columns:1fr;} }
+  .config-card .config-corpo{padding:18px 20px 22px;}
+  .rotulo-campo{
+    display:block; font-family:'Space Mono',monospace; font-size:.66rem; color:var(--cinza);
+    text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;
+  }
+  .config-corpo input[type="text"], .config-corpo input[type="number"], .config-corpo select{
+    width:100%; border:1px solid var(--linha); border-radius:6px; padding:9px 12px;
+    font-family:'Work Sans',sans-serif; font-size:.88rem; outline:none; background:#fff; color:var(--tinta);
+  }
+  .config-corpo input:focus, .config-corpo select:focus{border-color:var(--verde);}
+  .linha-config{display:flex; gap:10px; align-items:flex-end;}
+  .linha-config + .linha-config{margin-top:12px;}
+  .linha-tripla{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:12px; align-items:end;}
+  .btn-config{
+    background:var(--verde); color:#fff; border:none; border-radius:6px;
+    padding:9px 16px; font-family:'Space Mono',monospace; font-size:.78rem; font-weight:700;
+    cursor:pointer; white-space:nowrap; transition:background .2s;
+  }
+  .btn-config:hover{background:var(--verde-escuro);}
+  .btn-config-full{width:100%; margin-top:14px; padding:11px;}
+  .confirmacao-config{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--verde-escuro);
+    margin-top:10px; opacity:0; transition:opacity .3s; min-height:1em;
+  }
+  .confirmacao-config.mostrar{opacity:1;}
 
- .principal{
- display:grid; grid-template-columns:1fr 1.15fr; gap:26px;
- padding:4vh 5vw 6vh; align-items:start;
- }
- @media (max-width:900px){ .principal{grid-template-columns:1fr;} }
+  .principal{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:26px;
+    padding:4vh 5vw 6vh; align-items:start;
+  }
+  @media (max-width:900px){ .principal{grid-template-columns:1fr;} }
 
- .painel-box{background:var(--painel); border:1px solid var(--linha); border-radius:10px; overflow:hidden;}
- .painel-header{
- padding:16px 20px; border-bottom:1px solid var(--linha);
- display:flex; align-items:center; justify-content:space-between;
- }
- .painel-header h3{font-family:'Space Mono',monospace; font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--tinta);}
+  .painel-box{background:var(--painel); border:1px solid var(--linha); border-radius:10px; overflow:hidden;}
+  .painel-header{
+    padding:16px 20px; border-bottom:1px solid var(--linha);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .painel-header h3{font-family:'Space Mono',monospace; font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--tinta);}
 
- .chat-wrap{background:var(--verde-escuro); position:relative;}
- .chat-header{
- background:var(--verde); color:#fff; padding:14px 20px;
- display:flex; align-items:center; gap:12px;
- }
- .avatar-loja{
- width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.2);
- display:flex; align-items:center; justify-content:center; font-size:1.1rem;
- }
- .chat-header .nome{font-weight:700; font-size:.95rem;}
- .chat-header .status{font-family:'Space Mono',monospace; font-size:.68rem; opacity:.85;}
+  .chat-wrap{background:var(--verde-escuro); position:relative;}
+  .chat-header{
+    background:var(--verde); color:#fff; padding:14px 20px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .avatar-loja{
+    width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo Black', sans-serif; font-size:.9rem; color:#fff;
+  }
+  .chat-header .nome{font-weight:700; font-size:.95rem;}
+  .chat-header .status{font-family:'Space Mono',monospace; font-size:.68rem; opacity:.85;}
 
- .chat-body{
- padding:20px; min-height:360px; max-height:420px; overflow-y:auto;
- display:flex; flex-direction:column; gap:10px;
- background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
- background-size: 16px 16px;
- }
- .bolha{
- max-width:80%; padding:9px 13px; border-radius:10px; font-size:.9rem;
- align-self:flex-end; background:var(--verde-bolha); color:var(--tinta);
- box-shadow:0 2px 6px rgba(0,0,0,.15); animation:entra .25s ease;
- }
- .bolha.sistema{
- align-self:center; background:rgba(255,255,255,.14); color:#fff;
- font-family:'Space Mono',monospace; font-size:.72rem; text-align:center;
- padding:6px 12px; border-radius:20px;
- }
- .bolha .hora{display:block; font-family:'Space Mono',monospace; font-size:.62rem; opacity:.55; margin-top:4px; text-align:right;}
- @keyframes entra{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .chat-body{
+    padding:20px; min-height:360px; max-height:420px; overflow-y:auto;
+    display:flex; flex-direction:column; gap:10px;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .bolha{
+    max-width:80%; padding:9px 13px; border-radius:10px; font-size:.9rem;
+    align-self:flex-end; background:var(--verde-bolha); color:var(--tinta);
+    box-shadow:0 2px 6px rgba(0,0,0,.15); animation:entra .25s ease;
+  }
+  .bolha.sistema{
+    align-self:center; background:rgba(255,255,255,.14); color:#fff;
+    font-family:'Space Mono',monospace; font-size:.72rem; text-align:center;
+    padding:6px 12px; border-radius:20px;
+  }
+  .bolha .hora{display:block; font-family:'Space Mono',monospace; font-size:.62rem; opacity:.55; margin-top:4px; text-align:right;}
+  @keyframes entra{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 
- .ia-pensando{
- display:flex; align-items:center; gap:8px;
- font-family:'Space Mono',monospace; font-size:.72rem; color:#fff;
- background:rgba(255,255,255,.12); padding:8px 14px; border-radius:20px;
- align-self:center;
- }
- .ia-pensando .cerebro{font-size:1rem; animation:pulsaCerebro 1.2s infinite ease-in-out;}
- @keyframes pulsaCerebro{0%,100%{transform:scale(1);} 50%{transform:scale(1.15);}}
- .ia-pensando .pontinhos::after{content:'...'; animation:pontos 1.2s steps(4) infinite;}
- @keyframes pontos{0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';}}
+  .onda{display:flex; align-items:center; gap:3px; height:18px; margin-right:4px;}
+  .onda span{width:3px; background:var(--verde-escuro); border-radius:2px; animation:pulsa 1s infinite ease-in-out;}
+  .onda span:nth-child(1){height:6px; animation-delay:0s;}
+  .onda span:nth-child(2){height:14px; animation-delay:.1s;}
+  .onda span:nth-child(3){height:9px; animation-delay:.2s;}
+  .onda span:nth-child(4){height:16px; animation-delay:.3s;}
+  .onda span:nth-child(5){height:7px; animation-delay:.4s;}
+  @keyframes pulsa{0%,100%{transform:scaleY(.5);} 50%{transform:scaleY(1);}}
 
- .onda{display:flex; align-items:center; gap:3px; height:18px; margin-right:4px;}
- .onda span{width:3px; background:var(--verde-escuro); border-radius:2px; animation:pulsa 1s infinite ease-in-out;}
- .onda span:nth-child(1){height:6px; animation-delay:0s;}
- .onda span:nth-child(2){height:14px; animation-delay:.1s;}
- .onda span:nth-child(3){height:9px; animation-delay:.2s;}
- .onda span:nth-child(4){height:16px; animation-delay:.3s;}
- .onda span:nth-child(5){height:7px; animation-delay:.4s;}
- @keyframes pulsa{0%,100%{transform:scaleY(.5);} 50%{transform:scaleY(1);}}
+  .transcrevendo{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--verde-escuro); opacity:.8;
+    display:flex; align-items:center; gap:6px;
+  }
+  .transcrevendo .pontinhos::after{content:'...'; animation:pontos 1.2s steps(4) infinite;}
+  @keyframes pontos{0%{content:'';} 25%{content:'.';} 50%{content:'..';} 75%{content:'...';}}
 
- .tour-wrap{padding:12px 16px 0; background:rgba(255,255,255,.06);}
- .btn-tour{
- width:100%; background:var(--ambar); color:var(--tinta); border:none; border-radius:8px;
- padding:11px; font-family:'Space Mono',monospace; font-size:.78rem; font-weight:700;
- cursor:pointer; transition:filter .2s;
- }
- .btn-tour:hover{filter:brightness(1.08);}
- .btn-tour:disabled{opacity:.5; cursor:default; filter:none;}
+  .tour-wrap{padding:12px 16px 0; background:rgba(255,255,255,.06);}
+  .btn-tour{
+    width:100%; background:var(--ambar); color:var(--tinta); border:none; border-radius:8px;
+    padding:11px; font-family:'Space Mono',monospace; font-size:.78rem; font-weight:700;
+    cursor:pointer; transition:filter .2s;
+  }
+  .btn-tour:hover{filter:brightness(1.08);}
+  .btn-tour:disabled{opacity:.5; cursor:default; filter:none;}
 
- .audios-rapidos{
- padding:12px 16px; background:rgba(255,255,255,.06); display:flex; gap:8px; flex-wrap:wrap;
- border-top:1px solid rgba(255,255,255,.1);
- }
- .btn-audio{
- display:flex; align-items:center; gap:8px;
- background:rgba(255,255,255,.9); color:var(--tinta); border:none; border-radius:20px;
- padding:8px 14px; font-family:'Space Mono',monospace; font-size:.72rem; cursor:pointer;
- transition:transform .15s;
- }
- .btn-audio:hover{transform:translateY(-1px); background:#fff;}
- .btn-audio:disabled{opacity:.4; cursor:default; transform:none;}
+  .audios-rapidos{
+    padding:12px 16px; background:rgba(255,255,255,.06); display:flex; gap:8px; flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .btn-audio{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.9); color:var(--tinta); border:none; border-radius:20px;
+    padding:8px 14px; font-family:'Space Mono',monospace; font-size:.72rem; cursor:pointer;
+    transition:transform .15s;
+  }
+  .btn-audio:hover{transform:translateY(-1px); background:#fff;}
+  .btn-audio:disabled{opacity:.4; cursor:default; transform:none;}
 
- .chat-input{
- display:flex; gap:10px; padding:14px 16px; background:var(--painel);
- }
- .chat-input input{
- flex:1; border:1px solid var(--linha); border-radius:20px; padding:11px 16px;
- font-family:'Work Sans',sans-serif; font-size:.9rem; outline:none;
- }
- .chat-input input:focus{border-color:var(--verde);}
- .chat-input button{
- background:var(--verde); color:#fff; border:none; border-radius:50%;
- width:42px; height:42px; font-size:1.1rem; cursor:pointer; flex-shrink:0;
- display:flex; align-items:center; justify-content:center; transition:background .2s;
- }
- .chat-input button:hover{background:var(--verde-escuro);}
- .dica-input{
- font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
- padding:0 16px 14px;
- }
+  .chat-input{
+    display:flex; gap:10px; padding:14px 16px; background:var(--painel);
+  }
+  .chat-input input{
+    flex:1; border:1px solid var(--linha); border-radius:20px; padding:11px 16px;
+    font-family:'Work Sans',sans-serif; font-size:.9rem; outline:none;
+  }
+  .chat-input input:focus{border-color:var(--verde);}
+  .chat-input button{
+    background:var(--verde); color:#fff; border:none; border-radius:50%;
+    width:42px; height:42px; font-size:1.1rem; cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:background .2s;
+  }
+  .chat-input button:hover{background:var(--verde-escuro);}
+  .dica-input{
+    font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
+    padding:0 16px 14px;
+  }
 
- .tabela-estoque{width:100%; border-collapse:collapse;}
- .tabela-estoque th{
- text-align:left; font-family:'Space Mono',monospace; font-size:.66rem; text-transform:uppercase;
- letter-spacing:.06em; color:var(--cinza); padding:10px 20px; border-bottom:1px solid var(--linha);
- }
- .tabela-estoque td{padding:12px 20px; border-bottom:1px solid var(--linha); font-size:.88rem;}
- .tabela-estoque tr:last-child td{border-bottom:none;}
- .tabela-estoque tr.linha-alerta{background:rgba(226,72,59,0.06);}
- .qtd{font-family:'Space Mono',monospace; font-weight:700;}
- .qtd.baixa{color:var(--coral);}
- .qtd.ok{color:var(--verde-escuro);}
- .previsao{
- font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
- display:block; margin-top:2px;
- }
- .previsao.urgente{color:var(--coral); font-weight:700;}
- .badge-status{
- font-family:'Space Mono',monospace; font-size:.64rem; font-weight:700; padding:4px 9px;
- border-radius:20px; white-space:nowrap;
- }
- .badge-ruptura{background:var(--coral); color:#fff;}
- .badge-normal{background:rgba(31,122,77,.12); color:var(--verde-escuro);}
- .btn-remover{
- background:none; border:1px solid var(--linha); color:var(--cinza); border-radius:5px;
- width:26px; height:26px; cursor:pointer; font-size:.85rem; line-height:1; transition:all .2s;
- }
- .btn-remover:hover{background:var(--coral); border-color:var(--coral); color:#fff;}
- .flash{animation:piscaLinha 1s ease;}
- @keyframes piscaLinha{0%{background:rgba(227,163,21,0.35);} 100%{background:transparent;}}
+  .tabela-estoque{width:100%; border-collapse:collapse;}
+  .tabela-estoque th{
+    text-align:left; font-family:'Space Mono',monospace; font-size:.66rem; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--cinza); padding:10px 20px; border-bottom:1px solid var(--linha);
+  }
+  .tabela-estoque td{padding:12px 20px; border-bottom:1px solid var(--linha); font-size:.88rem;}
+  .tabela-estoque tr:last-child td{border-bottom:none;}
+  .tabela-estoque tr.linha-alerta{background:rgba(226,72,59,0.06);}
+  .qtd{font-family:'Space Mono',monospace; font-weight:700;}
+  .qtd.baixa{color:var(--coral);}
+  .qtd.ok{color:var(--verde-escuro);}
+  .previsao{
+    font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
+    display:block; margin-top:2px;
+  }
+  .previsao.urgente{color:var(--coral); font-weight:700;}
+  .badge-status{
+    font-family:'Space Mono',monospace; font-size:.64rem; font-weight:700; padding:4px 9px;
+    border-radius:20px; white-space:nowrap;
+  }
+  .badge-ruptura{background:var(--coral); color:#fff;}
+  .badge-normal{background:rgba(31,122,77,.12); color:var(--verde-escuro);}
+  .btn-remover{
+    background:none; border:1px solid var(--linha); color:var(--cinza); border-radius:5px;
+    width:26px; height:26px; cursor:pointer; font-size:.85rem; line-height:1; transition:all .2s;
+  }
+  .btn-remover:hover{background:var(--coral); border-color:var(--coral); color:#fff;}
+  .flash{animation:piscaLinha 1s ease;}
+  @keyframes piscaLinha{0%{background:rgba(227,163,21,0.35);} 100%{background:transparent;}}
 
- .analytics-wrap{
- padding:4vh 5vw 0; max-width:1000px;
- }
- .grafico-container{
- background:var(--painel); border:1px solid var(--linha); border-radius:10px;
- padding:20px; margin-top:16px;
- }
- .grafico-canvas-wrap{
- position:relative; height:220px; width:100%;
- }
- .grafico-canvas-wrap canvas{width:100%; height:100%;}
- .grafico-legenda{
- display:flex; gap:16px; justify-content:center; margin-top:12px;
- font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
- }
- .grafico-legenda span{display:flex; align-items:center; gap:6px;}
- .grafico-legenda .cor{width:10px; height:10px; border-radius:2px;}
+  .analytics-wrap{
+    padding:4vh 5vw 0; max-width:1000px;
+  }
+  .grafico-container{
+    background:var(--painel); border:1px solid var(--linha); border-radius:10px;
+    padding:20px; margin-top:16px;
+  }
+  .grafico-canvas-wrap{
+    position:relative; height:220px; width:100%;
+  }
+  .grafico-canvas-wrap canvas{width:100%; height:100%;}
+  .grafico-legenda{
+    display:flex; gap:16px; justify-content:center; margin-top:12px;
+    font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza);
+  }
+  .grafico-legenda span{display:flex; align-items:center; gap:6px;}
+  .grafico-legenda .cor{width:10px; height:10px; border-radius:2px;}
 
- .log-alertas{padding:14px 20px; max-height:150px; overflow-y:auto; border-top:1px solid var(--linha);}
- .log-alertas .item-log{
- font-family:'Space Mono',monospace; font-size:.72rem; color:var(--coral);
- padding:5px 0; border-bottom:1px dashed var(--linha);
- }
- .log-alertas .vazio{font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);}
+  .log-alertas{padding:14px 20px; max-height:150px; overflow-y:auto; border-top:1px solid var(--linha);}
+  .log-alertas .item-log{
+    font-family:'Space Mono',monospace; font-size:.72rem; color:var(--coral);
+    padding:5px 0; border-bottom:1px dashed var(--linha);
+  }
+  .log-alertas .vazio{font-family:'Space Mono',monospace; font-size:.72rem; color:var(--cinza);}
 
- .btn-exportar{
- background:var(--expo-ciano); color:#fff; border:none; border-radius:6px;
- padding:7px 14px; font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
- cursor:pointer; transition:background .2s;
- }
- .btn-exportar:hover{background:var(--expo-azul);}
+  .btn-exportar{
+    background:var(--expo-ciano); color:#fff; border:none; border-radius:6px;
+    padding:7px 14px; font-family:'Space Mono',monospace; font-size:.7rem; font-weight:700;
+    cursor:pointer; transition:background .2s;
+  }
+  .btn-exportar:hover{background:var(--expo-azul);}
 
- .badge-expo{
- display:inline-flex; align-items:center; gap:6px;
- background:var(--expo-claro); color:var(--expo-azul);
- font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700;
- padding:4px 10px; border-radius:20px; margin-left:10px;
- }
+  .badge-expo{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--expo-claro); color:var(--expo-azul);
+    font-family:'Space Mono',monospace; font-size:.65rem; font-weight:700;
+    padding:4px 10px; border-radius:20px; margin-left:10px;
+  }
 
- footer{
- border-top:1px solid var(--linha); padding:5vh 5vw 5vh; background:var(--painel);
- display:grid; grid-template-columns:1fr 1fr; gap:40px;
- }
- @media (max-width:700px){ footer{grid-template-columns:1fr;} }
- footer h4{font-family:'Space Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--verde-escuro); margin-bottom:12px;}
- .equipe-item{font-size:.88rem; padding:7px 0; border-bottom:1px dashed var(--linha); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
- .equipe-item span{color:var(--cinza); font-family:'Space Mono',monospace; font-size:.76rem;}
- footer .links a{display:block; margin-bottom:8px; font-family:'Space Mono',monospace; font-size:.82rem; text-decoration:none; color:var(--tinta);}
- footer .links a:hover{color:var(--verde);}
- .creditos{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-align:center; padding-bottom:30px;}
+  footer{
+    border-top:1px solid var(--linha); padding:5vh 5vw 5vh; background:var(--painel);
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+  }
+  @media (max-width:700px){ footer{grid-template-columns:1fr;} }
+  footer h4{font-family:'Space Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--verde-escuro); margin-bottom:12px;}
+  .equipe-item{font-size:.88rem; padding:7px 0; border-bottom:1px dashed var(--linha); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .equipe-item span{color:var(--cinza); font-family:'Space Mono',monospace; font-size:.76rem;}
+  footer .links a{display:block; margin-bottom:8px; font-family:'Space Mono',monospace; font-size:.82rem; text-decoration:none; color:var(--tinta);}
+  footer .links a:hover{color:var(--verde);}
+  .creditos{font-family:'Space Mono',monospace; font-size:.68rem; color:var(--cinza); text-align:center; padding-bottom:30px;}
 
- :focus-visible{outline:2px solid var(--verde); outline-offset:2px;}
- @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
-
- @media (max-width:480px){
- .hero{padding:4vh 4vw 2vh;}
- .hero h1{font-size:1.6rem;}
- .problema-grid{grid-template-columns:1fr;}
- .passos-uso{grid-template-columns:1fr;}
- .resumo{grid-template-columns:1fr 1fr;}
- .linha-tripla{grid-template-columns:1fr;}
- .linha-config{flex-direction:column; align-items:stretch;}
- .chat-body{min-height:280px; max-height:340px;}
- .grafico-container{padding:12px;}
- .audios-rapidos{flex-direction:column;}
- .btn-audio{width:100%; justify-content:center;}
- }
+  :focus-visible{outline:2px solid var(--verde); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
 </style>
 </head>
 <body>
 
 <header>
- <div class="logo"><span class="ponto"></span><span class="display">Stocky</span></div>
- <div class="tag">AppJam Expoagas 2026</div>
+  <div class="logo"><span class="ponto"></span><span class="display">Stocky</span></div>
+  <div class="tag">AppJam Expoagas 2026</div>
 </header>
 
 <div class="hero">
- <div class="eyebrow">IA aplicada ao varejo · Automação · Analytics</div>
- <h1 class="display">O estoque que se atualiza <span class="destaque">pelo whatsapp</span></h1>
- <p>Sem app novo, sem câmera cara. O funcionário manda mensagem de texto ou áudio do jeito que já manda todo dia — a IA entende produto, quantidade e se é entrada ou saída, e o estoque se atualiza sozinho. Com previsão de ruptura e analytics em tempo real.</p>
+  <div class="eyebrow">IA aplicada ao varejo · Automação · Analytics</div>
+  <h1 class="display">O estoque que se atualiza <span class="destaque">pelo whatsapp</span></h1>
+  <p>Sem app novo, sem câmera cara. O funcionário manda mensagem de texto ou áudio do jeito que já manda todo dia — a IA entende produto, quantidade e se é entrada ou saída, e o estoque se atualiza sozinho. Com previsão de ruptura e analytics em tempo real.</p>
 </div>
 
 <div class="como-usar" id="como-usar">
- <span class="eyebrow ciano">Como usar em 3 passos</span>
- <div class="passos-uso">
- <div class="passo-uso">
- <div class="passo-numero">1</div>
- <div class="passo-icone"></div>
- <div class="passo-titulo">Mande no WhatsApp</div>
- <div class="passo-texto">"Chegou 5kg de arroz" ou "acabou o leite" — do jeito natural, sem formulário</div>
- </div>
- <div class="passo-uso">
- <div class="passo-numero">2</div>
- <div class="passo-icone"></div>
- <div class="passo-titulo">IA interpreta sozinha</div>
- <div class="passo-texto">A inteligência identifica o produto, a quantidade e se é entrada ou saída</div>
- </div>
- <div class="passo-uso">
- <div class="passo-numero">3</div>
- <div class="passo-icone"></div>
- <div class="passo-titulo">Estoque atualiza sozinho</div>
- <div class="passo-texto">Tabela, alertas, previsão de ruptura e analytics — tudo em tempo real</div>
- </div>
- </div>
+  <span class="eyebrow ciano">Como usar em 3 passos</span>
+  <div class="passos-uso">
+    <div class="passo-uso">
+      <div class="passo-numero">1</div>
+      <div class="passo-titulo">Mande no WhatsApp</div>
+      <div class="passo-texto">"Chegou 5kg de arroz" ou "acabou o leite" — do jeito natural, sem formulário</div>
+    </div>
+    <div class="passo-uso">
+      <div class="passo-numero">2</div>
+      <div class="passo-titulo">IA interpreta sozinha</div>
+      <div class="passo-texto">A inteligência identifica o produto, a quantidade e se é entrada ou saída</div>
+    </div>
+    <div class="passo-uso">
+      <div class="passo-numero">3</div>
+      <div class="passo-titulo">Estoque atualiza sozinho</div>
+      <div class="passo-texto">Tabela, alertas, previsão de ruptura e analytics — tudo em tempo real</div>
+    </div>
+  </div>
 </div>
 
 <div class="problema" id="problema">
- <div class="problema-cabecalho">
- <span class="eyebrow" style="margin-bottom:0;">O problema</span>
- <p>A ruptura de estoque é um dos maiores ralos de faturamento do varejo supermercadista — e a causa raiz quase sempre é o mesmo gargalo: a contagem manual, lenta e propensa a erros.</p>
- </div>
- <div class="problema-grid">
- <div class="problema-item">
- <div class="problema-valor">3,7%</div>
- <div class="problema-desc">do faturamento perdido em média com produtos em ruptura na gôndola</div>
- <div class="problema-fonte">Fonte: Nielsen / APAS — setor supermercadista</div>
- </div>
- <div class="problema-item">
- <div class="problema-valor">30 min</div>
- <div class="problema-desc">por dia que um funcionário gasta conferindo estoque manualmente em planilha ou de cabeça</div>
- <div class="problema-fonte">Estimativa média do setor</div>
- </div>
- <div class="problema-item">
- <div class="problema-valor">1 em 10</div>
- <div class="problema-desc">itens fora de estoque não é reposto a tempo por falta de aviso — o cliente simplesmente não encontra</div>
- <div class="problema-fonte">Pesquisa de perdas no varejo</div>
- </div>
- </div>
+  <div class="problema-cabecalho">
+    <span class="eyebrow" style="margin-bottom:0;">O problema</span>
+    <p>A ruptura de estoque é um dos maiores ralos de faturamento do varejo supermercadista — e a causa raiz quase sempre é o mesmo gargalo: a contagem manual, lenta e propensa a erros.</p>
+  </div>
+  <div class="problema-grid">
+    <div class="problema-item">
+      <div class="problema-valor">3,7%</div>
+      <div class="problema-desc">do faturamento perdido em média com produtos em ruptura na gôndola</div>
+      <div class="problema-fonte">Fonte: Nielsen / APAS — setor supermercadista</div>
+    </div>
+    <div class="problema-item">
+      <div class="problema-valor">30 min</div>
+      <div class="problema-desc">por dia que um funcionário gasta conferindo estoque manualmente em planilha ou de cabeça</div>
+      <div class="problema-fonte">Estimativa média do setor</div>
+    </div>
+    <div class="problema-item">
+      <div class="problema-valor">1 em 10</div>
+      <div class="problema-desc">itens fora de estoque não é reposto a tempo por falta de aviso — o cliente simplesmente não encontra</div>
+      <div class="problema-fonte">Pesquisa de perdas no varejo</div>
+    </div>
+  </div>
 </div>
 
 <div class="resumo" id="resumo">
- <div class="stat"><div class="rotulo">Mensagens processadas</div><div class="valor" id="stat-msgs">0</div></div>
- <div class="stat ok"><div class="rotulo">Itens normais</div><div class="valor" id="stat-ok">8</div></div>
- <div class="stat alerta"><div class="rotulo">Alertas de ruptura</div><div class="valor" id="stat-alertas">0</div></div>
- <div class="stat"><div class="rotulo">Produtos monitorados</div><div class="valor" id="stat-total">8</div></div>
+  <div class="stat"><div class="rotulo">Mensagens processadas</div><div class="valor" id="stat-msgs">0</div></div>
+  <div class="stat ok"><div class="rotulo">Itens normais</div><div class="valor" id="stat-ok">8</div></div>
+  <div class="stat alerta"><div class="rotulo">Alertas de ruptura</div><div class="valor" id="stat-alertas">0</div></div>
+  <div class="stat"><div class="rotulo">Produtos monitorados</div><div class="valor" id="stat-total">8</div></div>
 </div>
 
 <div class="fluxo-ia" id="fluxo-ia">
- <span class="eyebrow" style="margin-bottom:0;">Como funciona a IA</span>
- <div class="fluxo-passos">
- <div class="fluxo-passo">
- <div class="fluxo-num">1</div>
- <div class="fluxo-icone"></div>
- <div class="fluxo-titulo">Áudio ou texto</div>
- <div class="fluxo-texto">Funcionário manda a mensagem do jeito natural — "chegou 5kg de arroz"</div>
- </div>
- <div class="fluxo-seta">→</div>
- <div class="fluxo-passo">
- <div class="fluxo-num">2</div>
- <div class="fluxo-icone"></div>
- <div class="fluxo-titulo">Interpretação NLP</div>
- <div class="fluxo-texto">A IA identifica produto, quantidade e se é entrada ou saída de estoque</div>
- </div>
- <div class="fluxo-seta">→</div>
- <div class="fluxo-passo">
- <div class="fluxo-num">3</div>
- <div class="fluxo-icone">🔄</div>
- <div class="fluxo-titulo">Atualização automática</div>
- <div class="fluxo-texto">O estoque é atualizado em tempo real, sem digitação manual em planilha</div>
- </div>
- <div class="fluxo-seta">→</div>
- <div class="fluxo-passo">
- <div class="fluxo-num">4</div>
- <div class="fluxo-icone"></div>
- <div class="fluxo-titulo">Alerta e previsão</div>
- <div class="fluxo-texto">Se o item entra em risco, o sistema alerta e prevê em quantos dias acaba</div>
- </div>
- </div>
+  <span class="eyebrow" style="margin-bottom:0;">Como funciona a IA</span>
+  <div class="fluxo-passos">
+    <div class="fluxo-passo">
+      <div class="fluxo-num">1</div>
+      <div class="fluxo-icone">MIC</div>
+      <div class="fluxo-titulo">Áudio ou texto</div>
+      <div class="fluxo-texto">Funcionário manda a mensagem do jeito natural — "chegou 5kg de arroz"</div>
+    </div>
+    <div class="fluxo-seta">→</div>
+    <div class="fluxo-passo">
+      <div class="fluxo-num">2</div>
+      <div class="fluxo-icone">NLP</div>
+      <div class="fluxo-titulo">Interpretação NLP</div>
+      <div class="fluxo-texto">A IA identifica produto, quantidade e se é entrada ou saída de estoque</div>
+    </div>
+    <div class="fluxo-seta">→</div>
+    <div class="fluxo-passo">
+      <div class="fluxo-num">3</div>
+      <div class="fluxo-icone">SYNC</div>
+      <div class="fluxo-titulo">Atualização automática</div>
+      <div class="fluxo-texto">O estoque é atualizado em tempo real, sem digitação manual em planilha</div>
+    </div>
+    <div class="fluxo-seta">→</div>
+    <div class="fluxo-passo">
+      <div class="fluxo-num">4</div>
+      <div class="fluxo-icone">ALERT</div>
+      <div class="fluxo-titulo">Alerta e previsão</div>
+      <div class="fluxo-texto">Se o item entra em risco, o sistema alerta e prevê em quantos dias acaba</div>
+    </div>
+  </div>
 </div>
 
 <div class="config-loja" id="config-loja">
- <div class="painel-box config-card">
- <div class="painel-header"><h3>Sua loja</h3></div>
- <div class="config-corpo">
- <label class="rotulo-campo" for="input-nome-loja">Nome do mercado</label>
- <div class="linha-config">
- <input type="text" id="input-nome-loja" placeholder="Ex: Mercado do Zé" maxlength="40" value="Mercado">
- <button id="btn-salvar-nome" class="btn-config">Salvar</button>
- </div>
- </div>
- </div>
+  <div class="painel-box config-card">
+    <div class="painel-header"><h3>Sua loja</h3></div>
+    <div class="config-corpo">
+      <label class="rotulo-campo" for="input-nome-loja">Nome do mercado</label>
+      <div class="linha-config">
+        <input type="text" id="input-nome-loja" placeholder="Ex: Mercado" maxlength="40" value="Mercado">
+        <button id="btn-salvar-nome" class="btn-config">Salvar</button>
+      </div>
+    </div>
+  </div>
 
- <div class="painel-box config-card">
- <div class="painel-header"><h3>Cadastrar produto</h3></div>
- <div class="config-corpo">
- <label class="rotulo-campo" for="input-novo-produto">Nome do produto</label>
- <input type="text" id="input-novo-produto" placeholder="Ex: Molho de Tomate" maxlength="40">
- <div class="linha-config linha-tripla">
- <div>
- <label class="rotulo-campo" for="input-nova-qtd">Qtd. inicial</label>
- <input type="number" id="input-nova-qtd" min="0" step="0.1" value="10">
- </div>
- <div>
- <label class="rotulo-campo" for="select-nova-unidade">Unidade</label>
- <select id="select-nova-unidade">
- <option value="kg">kg</option>
- <option value="g">g</option>
- <option value="un" selected>un</option>
- <option value="L">L</option>
- <option value="pacote">pacote</option>
- <option value="caixa">caixa</option>
- </select>
- </div>
- <div>
- <label class="rotulo-campo" for="input-novo-minimo">Mínimo p/ alerta</label>
- <input type="number" id="input-novo-minimo" min="0" step="0.1" value="3">
- </div>
- </div>
- <button id="btn-add-produto" class="btn-config btn-config-full">+ Adicionar produto</button>
- </div>
- </div>
+  <div class="painel-box config-card">
+    <div class="painel-header"><h3>Cadastrar produto</h3></div>
+    <div class="config-corpo">
+      <label class="rotulo-campo" for="input-novo-produto">Nome do produto</label>
+      <input type="text" id="input-novo-produto" placeholder="Ex: Molho de Tomate" maxlength="40">
+      <div class="linha-config linha-tripla">
+        <div>
+          <label class="rotulo-campo" for="input-nova-qtd">Qtd. inicial</label>
+          <input type="number" id="input-nova-qtd" min="0" step="0.1" value="10">
+        </div>
+        <div>
+          <label class="rotulo-campo" for="select-nova-unidade">Unidade</label>
+          <select id="select-nova-unidade">
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="un" selected>un</option>
+            <option value="L">L</option>
+            <option value="pacote">pacote</option>
+            <option value="caixa">caixa</option>
+          </select>
+        </div>
+        <div>
+          <label class="rotulo-campo" for="input-novo-minimo">Mínimo p/ alerta</label>
+          <input type="number" id="input-novo-minimo" min="0" step="0.1" value="3">
+        </div>
+      </div>
+      <button id="btn-add-produto" class="btn-config btn-config-full">+ Adicionar produto</button>
+    </div>
+  </div>
 </div>
 
 <div class="principal">
 
- <div class="painel-box chat-wrap">
- <div class="chat-header">
- <div class="avatar-loja"></div>
- <div>
- <div class="nome" id="nome-loja-chat">Mercado — Estoque</div>
- <div class="status">online · assistente de estoque</div>
- </div>
- </div>
+  <div class="painel-box chat-wrap">
+    <div class="chat-header">
+      <div class="avatar-loja">S</div>
+      <div>
+        <div class="nome" id="nome-loja-chat">Mercado — Estoque</div>
+        <div class="status">online · assistente de estoque</div>
+      </div>
+    </div>
 
- <div class="chat-body" id="chat-body"></div>
+    <div class="chat-body" id="chat-body"></div>
 
- <div class="tour-wrap">
- <button id="btn-tour" class="btn-tour"> Ver demonstração automática</button>
- </div>
+    <div class="tour-wrap">
+      <button id="btn-tour" class="btn-tour">Ver demonstração automática</button>
+    </div>
 
- <div class="audios-rapidos">
- <button class="btn-audio" data-audio="0"> Áudio: "chegou 5kg de arroz"</button>
- <button class="btn-audio" data-audio="1"> Áudio: "acabou o leite"</button>
- <button class="btn-audio" data-audio="2"> Áudio: "sobrou só 2kg de açúcar"</button>
- </div>
+    <div class="audios-rapidos">
+      <button class="btn-audio" data-audio="0">Audio: "chegou 5kg de arroz"</button>
+      <button class="btn-audio" data-audio="1">Audio: "acabou o leite"</button>
+      <button class="btn-audio" data-audio="2">Audio: "sobrou só 2kg de açúcar"</button>
+    </div>
 
- <div class="chat-input">
- <input type="text" id="input-msg" placeholder='Digite ex: "chegou 1kg de arroz"' maxlength="80">
- <button id="btn-enviar" aria-label="Enviar"></button>
- </div>
- <div class="dica-input">dica: use "chegou/reposição" pra entrada e "acabou/sobrou só/vendeu" pra saída — ex: "vendeu 3un de leite"</div>
- </div>
+    <div class="chat-input">
+      <input type="text" id="input-msg" placeholder='Digite ex: "chegou 1kg de arroz"' maxlength="80">
+      <button id="btn-enviar" aria-label="Enviar">></button>
+    </div>
+    <div class="dica-input">dica: use "chegou/reposição" pra entrada e "acabou/sobrou só/vendeu" pra saída — ex: "vendeu 3un de leite"</div>
+  </div>
 
- <div class="painel-box">
- <div class="painel-header">
- <h3>Estoque em tempo real</h3>
- <button id="btn-exportar" class="btn-exportar" title="Baixar relatório CSV"> Exportar CSV</button>
- </div>
- <table class="tabela-estoque">
- <thead>
- <tr><th>Produto</th><th>Qtd.</th><th>Previsão</th><th>Status</th><th></th></tr>
- </thead>
- <tbody id="tabela-body"></tbody>
- </table>
- <div class="log-alertas" id="log-alertas">
- <div class="vazio">Nenhum alerta gerado ainda.</div>
- </div>
- </div>
+  <div class="painel-box">
+    <div class="painel-header">
+      <h3>Estoque em tempo real</h3>
+      <button id="btn-exportar" class="btn-exportar" title="Baixar relatório CSV">Exportar CSV</button>
+    </div>
+    <table class="tabela-estoque">
+      <thead>
+        <tr><th>Produto</th><th>Qtd.</th><th>Previsão</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody id="tabela-body"></tbody>
+    </table>
+    <div class="log-alertas" id="log-alertas">
+      <div class="vazio">Nenhum alerta gerado ainda.</div>
+    </div>
+  </div>
 
 </div>
 
 <div class="analytics-wrap" id="analytics">
- <span class="eyebrow ciano">Analytics · Consumo por produto</span>
- <div class="grafico-container">
- <div class="grafico-canvas-wrap">
- <canvas id="grafico-consumo"></canvas>
- </div>
- <div class="grafico-legenda">
- <span><span class="cor" style="background:var(--coral);"></span> Saídas registradas</span>
- <span><span class="cor" style="background:var(--expo-ciano);"></span> Média de saída</span>
- </div>
- </div>
+  <span class="eyebrow ciano">Analytics · Consumo por produto</span>
+  <div class="grafico-container">
+    <div class="grafico-canvas-wrap">
+      <canvas id="grafico-consumo"></canvas>
+    </div>
+    <div class="grafico-legenda">
+      <span><span class="cor" style="background:var(--coral);"></span> Saídas registradas</span>
+      <span><span class="cor" style="background:var(--expo-ciano);"></span> Média de saída</span>
+    </div>
+  </div>
 </div>
 
 <footer>
- <div>
- <h4>Equipe <span class="badge-expo">AppJam Expoagas 2026</span></h4>
- <div class="equipe-item">Nome do Integrante 1 <span>email1@exemplo.com</span></div>
- <div class="equipe-item">Nome do Integrante 2 <span>email2@exemplo.com</span></div>
- <div class="equipe-item">Nome do Integrante 3 <span>email3@exemplo.com</span></div>
- </div>
- <div class="links">
- <h4>Projeto</h4>
- <a href="#" target="_blank"> Repositório no GitHub →</a>
- <a href="#" target="_blank"> Aplicação publicada (GitHub Pages) →</a>
- <a href="https://agas.com.br" target="_blank"> AppJam Expoagas 2026 →</a>
- </div>
+  <div>
+    <h4>Equipe <span class="badge-expo">AppJam Expoagas 2026</span></h4>
+    <div class="equipe-item">Nome do Integrante 1 <span>email1@exemplo.com</span></div>
+    <div class="equipe-item">Nome do Integrante 2 <span>email2@exemplo.com</span></div>
+    <div class="equipe-item">Nome do Integrante 3 <span>email3@exemplo.com</span></div>
+  </div>
+  <div class="links">
+    <h4>Projeto</h4>
+    <a href="#" target="_blank">Repositório no GitHub →</a>
+    <a href="#" target="_blank">Aplicação publicada (GitHub Pages) →</a>
+    <a href="https://agas.com.br" target="_blank">AppJam Expoagas 2026 →</a>
+  </div>
 </footer>
 <div class="creditos">Stocky — protótipo construído para a AppJam Expoagas 2026 · UniRitter</div>
 
 <script>
 const estoque = {
- "arroz": {nome:"Arroz Tipo 1", qtd:10, unidade:"kg", minimo:5},
- "feijao": {nome:"Feijão Preto", qtd:8, unidade:"kg", minimo:4},
- "acucar": {nome:"Açúcar Refinado", qtd:4, unidade:"kg", minimo:5},
- "oleo": {nome:"Óleo de Soja", qtd:12, unidade:"L", minimo:6},
- "leite": {nome:"Leite Integral", qtd:15, unidade:"un", minimo:6},
- "cafe": {nome:"Café Torrado", qtd:1, unidade:"kg", minimo:3},
- "papel": {nome:"Papel Higiênico", qtd:20, unidade:"un", minimo:8},
- "detergente":{nome:"Detergente", qtd:18, unidade:"un", minimo:8},
+  "arroz":     {nome:"Arroz Tipo 1",      qtd:10, unidade:"kg", minimo:5},
+  "feijao":    {nome:"Feijão Preto",      qtd:8,  unidade:"kg", minimo:4},
+  "acucar":    {nome:"Açúcar Refinado",   qtd:4,  unidade:"kg", minimo:5},
+  "oleo":      {nome:"Óleo de Soja",      qtd:12, unidade:"L",  minimo:6},
+  "leite":     {nome:"Leite Integral",    qtd:15, unidade:"un", minimo:6},
+  "cafe":      {nome:"Café Torrado",      qtd:1,  unidade:"kg", minimo:3},
+  "papel":     {nome:"Papel Higiênico",   qtd:20, unidade:"un", minimo:8},
+  "detergente":{nome:"Detergente",        qtd:18, unidade:"un", minimo:8},
 };
 
 const historicoSaidas = {};
@@ -609,285 +593,277 @@ const canvas = document.getElementById("grafico-consumo");
 const ctx = canvas.getContext("2d");
 
 function normalizar(txt){
- return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+  return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
 }
 
 function interpretarMensagem(textoOriginal){
- const txt = normalizar(textoOriginal);
- let acao = null;
- if(/\b(chegou|chegaram|reposicao|recebido|recebemos|entrou|entraram|comprou|comprei|comprando|comprado|adquiriu|adquirimos|ganhou|ganhamos|repor|repos)\b/.test(txt)) acao = "entrada";
- if(/\b(acabou|acabaram|vendeu|vendemos|sobrou|saiu|sairam|gastou|gastamos|usou|usamos)\b/.test(txt)) acao = "saida";
- const matchQtd = txt.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|un|l|litros?|unidades?|pacotes?|caixas?)?/);
- let quantidade = matchQtd ? parseFloat(matchQtd[1].replace(",",".")) : null;
- const zerou = /\b(acabou|acabaram)\b/.test(txt) && quantidade === null;
- const chaveProduto = encontrarProduto(txt);
- return {chaveProduto, quantidade, acao, zerou};
+  const txt = normalizar(textoOriginal);
+  let acao = null;
+  if(/\b(chegou|chegaram|reposicao|recebido|recebemos|entrou|entraram|comprou|comprei|comprando|comprado|adquiriu|adquirimos|ganhou|ganhamos|repor|repos)\b/.test(txt)) acao = "entrada";
+  if(/\b(acabou|acabaram|vendeu|vendemos|sobrou|saiu|sairam|gastou|gastamos|usou|usamos)\b/.test(txt)) acao = "saida";
+  const matchQtd = txt.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|un|l|litros?|unidades?|pacotes?|caixas?)?/);
+  let quantidade = matchQtd ? parseFloat(matchQtd[1].replace(",",".")) : null;
+  const zerou = /\b(acabou|acabaram)\b/.test(txt) && quantidade === null;
+  const chaveProduto = encontrarProduto(txt);
+  return {chaveProduto, quantidade, acao, zerou};
 }
 
 function encontrarProduto(txtNormalizado){
- let melhorChave = null;
- let melhorTamanho = 0;
- for(const [chave, item] of Object.entries(estoque)){
- const palavras = normalizar(item.nome).split(/\s+/).filter(p => p.length >= 3);
- for(const palavra of palavras){
- if(txtNormalizado.includes(palavra) && palavra.length > melhorTamanho){
- melhorChave = chave;
- melhorTamanho = palavra.length;
- }
- }
- }
- return melhorChave;
+  let melhorChave = null;
+  let melhorTamanho = 0;
+  for(const [chave, item] of Object.entries(estoque)){
+    const palavras = normalizar(item.nome).split(/\s+/).filter(p => p.length >= 3);
+    for(const palavra of palavras){
+      if(txtNormalizado.includes(palavra) && palavra.length > melhorTamanho){
+        melhorChave = chave;
+        melhorTamanho = palavra.length;
+      }
+    }
+  }
+  return melhorChave;
 }
 
 function aplicarNoEstoque(interpretacao){
- const {chaveProduto, quantidade, acao, zerou} = interpretacao;
- if(!chaveProduto || !estoque[chaveProduto]) return {status:"produto_nao_encontrado"};
- if(acao === null && !zerou) return {status:"acao_ambigua"};
- const item = estoque[chaveProduto];
- if(zerou){
- item.qtd = 0;
- } else if(quantidade !== null){
- if(acao === "saida"){
- if(!historicoSaidas[chaveProduto]) historicoSaidas[chaveProduto] = [];
- historicoSaidas[chaveProduto].push(quantidade);
- }
- item.qtd = acao === "entrada" ? item.qtd + quantidade : Math.max(0, item.qtd - quantidade);
- } else {
- return {status:"sem_quantidade", item};
- }
- ultimaMovimentacao[chaveProduto] = totalMsgs;
- item._avisadoParado = false;
- return {status:"ok", item, chaveProduto};
+  const {chaveProduto, quantidade, acao, zerou} = interpretacao;
+  if(!chaveProduto || !estoque[chaveProduto]) return {status:"produto_nao_encontrado"};
+  if(acao === null && !zerou) return {status:"acao_ambigua"};
+  const item = estoque[chaveProduto];
+  if(zerou){
+    item.qtd = 0;
+  } else if(quantidade !== null){
+    if(acao === "saida"){
+      if(!historicoSaidas[chaveProduto]) historicoSaidas[chaveProduto] = [];
+      historicoSaidas[chaveProduto].push(quantidade);
+    }
+    item.qtd = acao === "entrada" ? item.qtd + quantidade : Math.max(0, item.qtd - quantidade);
+  } else {
+    return {status:"sem_quantidade", item};
+  }
+  ultimaMovimentacao[chaveProduto] = totalMsgs;
+  item._avisadoParado = false;
+  return {status:"ok", item, chaveProduto};
 }
 
 function sugerirReposicao(chaveProduto, item){
- const historico = historicoSaidas[chaveProduto];
- if(historico && historico.length > 0){
- const media = historico.reduce((a,b)=>a+b,0) / historico.length;
- return Math.max(Math.ceil(media * 3), item.minimo);
- }
- return item.minimo * 2;
+  const historico = historicoSaidas[chaveProduto];
+  if(historico && historico.length > 0){
+    const media = historico.reduce((a,b)=>a+b,0) / historico.length;
+    return Math.max(Math.ceil(media * 3), item.minimo);
+  }
+  return item.minimo * 2;
 }
 
 function calcularPrevisaoRuptura(chaveProduto, item){
- const historico = historicoSaidas[chaveProduto];
- if(!historico || historico.length === 0 || item.qtd <= 0) return null;
- const mediaSaida = historico.reduce((a,b)=>a+b,0) / historico.length;
- if(mediaSaida <= 0) return null;
- const dias = Math.floor(item.qtd / mediaSaida);
- return dias;
+  const historico = historicoSaidas[chaveProduto];
+  if(!historico || historico.length === 0 || item.qtd <= 0) return null;
+  const mediaSaida = historico.reduce((a,b)=>a+b,0) / historico.length;
+  if(mediaSaida <= 0) return null;
+  const dias = Math.floor(item.qtd / mediaSaida);
+  return dias;
 }
 
 function verificarProdutosParados(){
- const parados = [];
- for(const [chave, item] of Object.entries(estoque)){
- if(item.qtd <= 0) continue;
- const ultima = ultimaMovimentacao[chave] ?? 0;
- if(totalMsgs - ultima >= LIMITE_PARADO && !item._avisadoParado){
- item._avisadoParado = true;
- parados.push(item);
- }
- }
- return parados;
+  const parados = [];
+  for(const [chave, item] of Object.entries(estoque)){
+    if(item.qtd <= 0) continue;
+    const ultima = ultimaMovimentacao[chave] ?? 0;
+    if(totalMsgs - ultima >= LIMITE_PARADO && !item._avisadoParado){
+      item._avisadoParado = true;
+      parados.push(item);
+    }
+  }
+  return parados;
 }
 
 function renderGrafico(){
- const produtos = Object.entries(estoque);
- if(produtos.length === 0) return;
-
- const dpr = window.devicePixelRatio || 1;
- const rect = canvas.parentElement.getBoundingClientRect();
- canvas.width = rect.width * dpr;
- canvas.height = rect.height * dpr;
- ctx.scale(dpr, dpr);
-
- const w = rect.width;
- const h = rect.height;
- const padding = {top:20, right:10, bottom:40, left:40};
- const chartW = w - padding.left - padding.right;
- const chartH = h - padding.top - padding.bottom;
-
- ctx.clearRect(0, 0, w, h);
-
- const nomes = produtos.map(([k,v]) => v.nome.split(' ')[0]);
- const saidas = produtos.map(([k,v]) => {
- const hist = historicoSaidas[k];
- return hist ? hist.reduce((a,b)=>a+b,0) : 0;
- });
- const medias = produtos.map(([k,v]) => {
- const hist = historicoSaidas[k];
- return hist ? hist.reduce((a,b)=>a+b,0) / hist.length : 0;
- });
-
- const maxVal = Math.max(...saidas, ...medias, 1);
- const barW = Math.min((chartW / produtos.length) * 0.35, 30);
- const gap = (chartW / produtos.length);
-
- ctx.strokeStyle = '#E1E4DD';
- ctx.lineWidth = 1;
- ctx.font = '10px "Space Mono", monospace';
- ctx.fillStyle = '#6B7570';
- ctx.textAlign = 'right';
- for(let i=0; i<=4; i++){
- const y = padding.top + chartH - (chartH * i / 4);
- ctx.beginPath();
- ctx.moveTo(padding.left, y);
- ctx.lineTo(padding.left + chartW, y);
- ctx.stroke();
- ctx.fillText(Math.round(maxVal * i / 4), padding.left - 6, y + 3);
- }
-
- produtos.forEach(([k,v], i) => {
- const x = padding.left + (i * gap) + (gap / 2);
- const hSaida = (saidas[i] / maxVal) * chartH;
- ctx.fillStyle = '#E2483B';
- ctx.fillRect(x - barW - 2, padding.top + chartH - hSaida, barW, hSaida);
- const hMedia = (medias[i] / maxVal) * chartH;
- ctx.fillStyle = '#00A0B0';
- ctx.fillRect(x + 2, padding.top + chartH - hMedia, barW, hMedia);
- ctx.fillStyle = '#6B7570';
- ctx.font = '9px "Space Mono", monospace';
- ctx.textAlign = 'center';
- ctx.fillText(nomes[i], x, padding.top + chartH + 14);
- });
+  const produtos = Object.entries(estoque);
+  if(produtos.length === 0) return;
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  const w = rect.width;
+  const h = rect.height;
+  const padding = {top:20, right:10, bottom:40, left:40};
+  const chartW = w - padding.left - padding.right;
+  const chartH = h - padding.top - padding.bottom;
+  ctx.clearRect(0, 0, w, h);
+  const nomes = produtos.map(([k,v]) => v.nome.split(' ')[0]);
+  const saidas = produtos.map(([k,v]) => {
+    const hist = historicoSaidas[k];
+    return hist ? hist.reduce((a,b)=>a+b,0) : 0;
+  });
+  const medias = produtos.map(([k,v]) => {
+    const hist = historicoSaidas[k];
+    return hist ? hist.reduce((a,b)=>a+b,0) / hist.length : 0;
+  });
+  const maxVal = Math.max(...saidas, ...medias, 1);
+  if(maxVal === 1 && saidas.every(s=>s===0) && medias.every(m=>m===0)){
+    ctx.fillStyle = '#6B7570';
+    ctx.font = '12px "Space Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('Nenhuma saída registrada ainda.', w/2, h/2);
+    return;
+  }
+  const barW = Math.min((chartW / produtos.length) * 0.35, 30);
+  const gap = (chartW / produtos.length);
+  ctx.strokeStyle = '#E1E4DD';
+  ctx.lineWidth = 1;
+  ctx.font = '10px "Space Mono", monospace';
+  ctx.fillStyle = '#6B7570';
+  ctx.textAlign = 'right';
+  for(let i=0; i<=4; i++){
+    const y = padding.top + chartH - (chartH * i / 4);
+    ctx.beginPath();
+    ctx.moveTo(padding.left, y);
+    ctx.lineTo(padding.left + chartW, y);
+    ctx.stroke();
+    ctx.fillText(Math.round(maxVal * i / 4), padding.left - 6, y + 3);
+  }
+  produtos.forEach(([k,v], i) => {
+    const x = padding.left + (i * gap) + (gap / 2);
+    const hSaida = (saidas[i] / maxVal) * chartH;
+    ctx.fillStyle = '#E2483B';
+    ctx.fillRect(x - barW - 2, padding.top + chartH - hSaida, barW, hSaida);
+    const hMedia = (medias[i] / maxVal) * chartH;
+    ctx.fillStyle = '#00A0B0';
+    ctx.fillRect(x + 2, padding.top + chartH - hMedia, barW, hMedia);
+    ctx.fillStyle = '#6B7570';
+    ctx.font = '9px "Space Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(nomes[i], x, padding.top + chartH + 14);
+  });
 }
 
 function exportarCSV(){
- let csv = "Produto,Quantidade,Unidade,Minimo,Status,Previsao_Ruptura_Dias\n";
- for(const [chave, item] of Object.entries(estoque)){
- const status = item.qtd <= item.minimo ? "RISCO" : "OK";
- const prev = calcularPrevisaoRuptura(chave, item);
- const prevStr = prev !== null ? prev : "N/A";
- csv += `"${item.nome}",${item.qtd},${item.unidade},${item.minimo},${status},${prevStr}\n`;
- }
- const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
- const url = URL.createObjectURL(blob);
- const a = document.createElement('a');
- a.href = url;
- a.download = `relatorio_estoque_${nomeLoja.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.csv`;
- document.body.appendChild(a);
- a.click();
- document.body.removeChild(a);
- URL.revokeObjectURL(url);
- adicionarBolhaSistema(` Relatório CSV exportado com sucesso!`);
+  let csv = "Produto,Quantidade,Unidade,Minimo,Status,Previsao_Ruptura_Dias\n";
+  for(const [chave, item] of Object.entries(estoque)){
+    const status = item.qtd <= item.minimo ? "RISCO" : "OK";
+    const prev = calcularPrevisaoRuptura(chave, item);
+    const prevStr = prev !== null ? prev : "N/A";
+    csv += `"${item.nome}",${item.qtd},${item.unidade},${item.minimo},${status},${prevStr}\n`;
+  }
+  const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `relatorio_estoque_${nomeLoja.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  adicionarBolhaSistema('Relatório CSV exportado com sucesso!');
 }
 
 document.getElementById("btn-exportar").addEventListener("click", exportarCSV);
 
 function renderTabela(destacarChave){
- const tbody = document.getElementById("tabela-body");
-
- if(Object.keys(estoque).length === 0){
- tbody.innerHTML = `<tr><td colspan="5" style="color:var(--cinza); font-family:'Space Mono',monospace; font-size:.78rem; padding:20px;">Nenhum produto cadastrado ainda. Use o formulário "Cadastrar produto" acima.</td></tr>`;
- } else {
- tbody.innerHTML = Object.entries(estoque).map(([chave, item])=>{
- const emRisco = item.qtd <= item.minimo;
- const prevDias = calcularPrevisaoRuptura(chave, item);
- let prevHtml = '<span class="previsao">—</span>';
- if(prevDias !== null){
- const urgente = prevDias <= 2;
- prevHtml = `<span class="previsao ${urgente?'urgente':''}">${urgente?' ':''}faltam ~${prevDias} dia${prevDias!==1?'s':''}</span>`;
- } else if(emRisco){
- prevHtml = '<span class="previsao urgente"> sem histórico</span>';
- }
- return `
- <tr class="${emRisco ? 'linha-alerta':''} ${chave===destacarChave ? 'flash':''}">
- <td>${item.nome}</td>
- <td class="qtd ${emRisco?'baixa':'ok'}">${item.qtd} ${item.unidade}</td>
- <td>${prevHtml}</td>
- <td><span class="badge-status ${emRisco?'badge-ruptura':'badge-normal'}">${emRisco?'⚠ risco de ruptura':'ok'}</span></td>
- <td><button class="btn-remover" data-remover="${chave}" title="Remover produto" aria-label="Remover ${item.nome}"></button></td>
- </tr>`;
- }).join("");
- }
-
- document.querySelectorAll("[data-remover]").forEach(btn=>{
- btn.addEventListener("click", ()=>{
- const chave = btn.dataset.remover;
- const nomeRemovido = estoque[chave]?.nome;
- delete estoque[chave];
- renderTabela(null);
- renderGrafico();
- if(nomeRemovido) adicionarBolhaSistema(` ${nomeRemovido} removido do estoque monitorado.`);
- });
- });
-
- const totalProdutos = Object.keys(estoque).length;
- const emRiscoCount = Object.values(estoque).filter(i=>i.qtd <= i.minimo).length;
- document.getElementById("stat-alertas").textContent = emRiscoCount;
- document.getElementById("stat-ok").textContent = totalProdutos - emRiscoCount;
- document.getElementById("stat-total").textContent = totalProdutos;
+  const tbody = document.getElementById("tabela-body");
+  if(Object.keys(estoque).length === 0){
+    tbody.innerHTML = `<tr><td colspan="5" style="color:var(--cinza); font-family:'Space Mono',monospace; font-size:.78rem; padding:20px;">Nenhum produto cadastrado ainda. Use o formulário "Cadastrar produto" acima.</td></tr>`;
+  } else {
+    tbody.innerHTML = Object.entries(estoque).map(([chave, item])=>{
+      const emRisco = item.qtd <= item.minimo;
+      const prevDias = calcularPrevisaoRuptura(chave, item);
+      let prevHtml = '<span class="previsao">—</span>';
+      if(prevDias !== null){
+        const urgente = prevDias <= 2;
+        prevHtml = `<span class="previsao ${urgente?'urgente':''}">${urgente?'[!] ':''}faltam ~${prevDias} dia${prevDias!==1?'s':''}</span>`;
+      } else if(emRisco){
+        prevHtml = '<span class="previsao urgente">[!] sem histórico</span>';
+      }
+      return `
+      <tr class="${emRisco ? 'linha-alerta':''} ${chave===destacarChave ? 'flash':''}">
+        <td>${item.nome}</td>
+        <td class="qtd ${emRisco?'baixa':'ok'}">${item.qtd} ${item.unidade}</td>
+        <td>${prevHtml}</td>
+        <td><span class="badge-status ${emRisco?'badge-ruptura':'badge-normal'}">${emRisco?'[!] risco de ruptura':'ok'}</span></td>
+        <td><button class="btn-remover" data-remover="${chave}" title="Remover produto" aria-label="Remover ${item.nome}">x</button></td>
+      </tr>`;
+    }).join("");
+  }
+  document.querySelectorAll("[data-remover]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const chave = btn.dataset.remover;
+      const nomeRemovido = estoque[chave]?.nome;
+      delete estoque[chave];
+      renderTabela(null);
+      renderGrafico();
+      if(nomeRemovido) adicionarBolhaSistema(`${nomeRemovido} removido do estoque monitorado.`);
+    });
+  });
+  const totalProdutos = Object.keys(estoque).length;
+  const emRiscoCount = Object.values(estoque).filter(i=>i.qtd <= i.minimo).length;
+  document.getElementById("stat-alertas").textContent = emRiscoCount;
+  document.getElementById("stat-ok").textContent = totalProdutos - emRiscoCount;
+  document.getElementById("stat-total").textContent = totalProdutos;
 }
 
 function registrarAlerta(item){
- if(logAlertasEl.querySelector(".vazio")) logAlertasEl.innerHTML = "";
- const linha = document.createElement("div");
- linha.className = "item-log";
- const agora = new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
- linha.textContent = `⚠ ${agora} — ${item.nome} em risco de ruptura (${item.qtd} ${item.unidade})`;
- logAlertasEl.prepend(linha);
+  if(logAlertasEl.querySelector(".vazio")) logAlertasEl.innerHTML = "";
+  const linha = document.createElement("div");
+  linha.className = "item-log";
+  const agora = new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
+  linha.textContent = `[!] ${agora} — ${item.nome} em risco de ruptura (${item.qtd} ${item.unidade})`;
+  logAlertasEl.prepend(linha);
 }
 
 function horaAgora(){
- return new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
+  return new Date().toLocaleTimeString("pt-BR",{hour:'2-digit',minute:'2-digit'});
 }
 
 function adicionarBolhaUsuario(texto){
- const div = document.createElement("div");
- div.className = "bolha";
- div.innerHTML = `${texto}<span class="hora">${horaAgora()}</span>`;
- chatBody.appendChild(div);
- chatBody.scrollTop = chatBody.scrollHeight;
+  const div = document.createElement("div");
+  div.className = "bolha";
+  div.innerHTML = `${texto}<span class="hora">${horaAgora()}</span>`;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 function adicionarBolhaSistema(texto){
- const div = document.createElement("div");
- div.className = "bolha sistema";
- div.textContent = texto;
- chatBody.appendChild(div);
- chatBody.scrollTop = chatBody.scrollHeight;
+  const div = document.createElement("div");
+  div.className = "bolha sistema";
+  div.textContent = texto;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 function processarMensagem(textoOriginal){
- adicionarBolhaUsuario(textoOriginal);
-
- const pensando = document.createElement("div");
- pensando.className = "ia-pensando";
- pensando.innerHTML = `<span class="cerebro"></span> IA interpretando<span class="pontinhos"></span>`;
- chatBody.appendChild(pensando);
- chatBody.scrollTop = chatBody.scrollHeight;
-
- setTimeout(()=>{
- pensando.remove();
- const interpretacao = interpretarMensagem(textoOriginal);
- const resultado = aplicarNoEstoque(interpretacao);
-
- if(resultado.status === "produto_nao_encontrado"){
- adicionarBolhaSistema(" Produto não cadastrado no estoque monitorado.");
- } else if(resultado.status === "acao_ambigua"){
- adicionarBolhaSistema(" Não ficou claro se é entrada ou saída. Estoque não foi alterado.");
- } else if(resultado.status === "sem_quantidade"){
- adicionarBolhaSistema(` Identifiquei "${resultado.item.nome}" mas não a quantidade. Estoque não foi alterado.`);
- } else {
- const item = resultado.item;
- const acaoTexto = interpretacao.acao === "entrada" ? "entrada" : "saída";
- adicionarBolhaSistema(` Estoque atualizado: ${item.nome} → ${item.qtd} ${item.unidade} (${acaoTexto})`);
- renderTabela(resultado.chaveProduto);
- renderGrafico();
- if(item.qtd <= item.minimo){
- registrarAlerta(item);
- const sugestao = sugerirReposicao(resultado.chaveProduto, item);
- adicionarBolhaSistema(` Sugestão: repor ~${sugestao} ${item.unidade} de ${item.nome}, com base no consumo recente.`);
- }
- }
-
- totalMsgs++;
- document.getElementById("stat-msgs").textContent = totalMsgs;
-
- verificarProdutosParados().forEach(item=>{
- adicionarBolhaSistema(` ${item.nome} está parado há um tempo — nenhuma entrada ou saída registrada recentemente.`);
- });
- }, 700);
+  adicionarBolhaUsuario(textoOriginal);
+  const pensando = document.createElement("div");
+  pensando.className = "bolha sistema transcrevendo";
+  pensando.innerHTML = `IA interpretando<span class="pontinhos"></span>`;
+  chatBody.appendChild(pensando);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  setTimeout(()=>{
+    pensando.remove();
+    const interpretacao = interpretarMensagem(textoOriginal);
+    const resultado = aplicarNoEstoque(interpretacao);
+    if(resultado.status === "produto_nao_encontrado"){
+      adicionarBolhaSistema("Produto não cadastrado no estoque monitorado.");
+    } else if(resultado.status === "acao_ambigua"){
+      adicionarBolhaSistema("Não ficou claro se é entrada ou saída. Estoque não foi alterado.");
+    } else if(resultado.status === "sem_quantidade"){
+      adicionarBolhaSistema(`Identifiquei "${resultado.item.nome}" mas não a quantidade. Estoque não foi alterado.`);
+    } else {
+      const item = resultado.item;
+      const acaoTexto = interpretacao.acao === "entrada" ? "entrada" : "saída";
+      adicionarBolhaSistema(`Estoque atualizado: ${item.nome} → ${item.qtd} ${item.unidade} (${acaoTexto})`);
+      renderTabela(resultado.chaveProduto);
+      renderGrafico();
+      if(item.qtd <= item.minimo){
+        registrarAlerta(item);
+        const sugestao = sugerirReposicao(resultado.chaveProduto, item);
+        adicionarBolhaSistema(`Sugestão: repor ~${sugestao} ${item.unidade} de ${item.nome}, com base no consumo recente.`);
+      }
+    }
+    totalMsgs++;
+    document.getElementById("stat-msgs").textContent = totalMsgs;
+    verificarProdutosParados().forEach(item=>{
+      adicionarBolhaSistema(`${item.nome} está parado há um tempo — nenhuma entrada ou saída registrada recentemente.`);
+    });
+  }, 700);
 }
 
 const inputMsg = document.getElementById("input-msg");
@@ -895,125 +871,118 @@ document.getElementById("btn-enviar").addEventListener("click", enviarTexto);
 inputMsg.addEventListener("keydown", e=>{ if(e.key === "Enter") enviarTexto(); });
 
 function enviarTexto(){
- const texto = inputMsg.value.trim();
- if(!texto) return;
- processarMensagem(texto);
- inputMsg.value = "";
+  const texto = inputMsg.value.trim();
+  if(!texto) return;
+  processarMensagem(texto);
+  inputMsg.value = "";
 }
 
 const audiosPreProntos = [
- "chegou 5kg de arroz",
- "acabou o leite",
- "sobrou só 2kg de açúcar",
+  "chegou 5kg de arroz",
+  "acabou o leite",
+  "sobrou só 2kg de açúcar",
 ];
 
 document.querySelectorAll(".btn-audio").forEach(btn=>{
- btn.addEventListener("click", ()=>{
- const idx = btn.dataset.audio;
- const textoFinal = audiosPreProntos[idx];
- btn.disabled = true;
-
- const bolhaOnda = document.createElement("div");
- bolhaOnda.className = "bolha";
- bolhaOnda.innerHTML = `<div class="onda"><span></span><span></span><span></span><span></span><span></span></div>`;
- chatBody.appendChild(bolhaOnda);
- chatBody.scrollTop = chatBody.scrollHeight;
-
- setTimeout(()=>{
- bolhaOnda.remove();
- processarMensagem(textoFinal);
- setTimeout(()=>{ btn.disabled = false; }, 900);
- }, 900);
- });
+  btn.addEventListener("click", ()=>{
+    const idx = btn.dataset.audio;
+    const textoFinal = audiosPreProntos[idx];
+    btn.disabled = true;
+    const bolhaOnda = document.createElement("div");
+    bolhaOnda.className = "bolha";
+    bolhaOnda.innerHTML = `<div class="onda"><span></span><span></span><span></span><span></span><span></span></div>`;
+    chatBody.appendChild(bolhaOnda);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(()=>{
+      bolhaOnda.remove();
+      processarMensagem(textoFinal);
+      setTimeout(()=>{ btn.disabled = false; }, 900);
+    }, 900);
+  });
 });
 
 document.getElementById("btn-salvar-nome").addEventListener("click", ()=>{
- const novoNome = document.getElementById("input-nome-loja").value.trim();
- if(!novoNome) return;
- nomeLoja = novoNome;
- document.getElementById("nome-loja-chat").textContent = `${nomeLoja} — Estoque`;
- document.title = `Stocky — ${nomeLoja}`;
- adicionarBolhaSistema(` Loja renomeada para "${nomeLoja}".`);
+  const novoNome = document.getElementById("input-nome-loja").value.trim();
+  if(!novoNome) return;
+  nomeLoja = novoNome;
+  document.getElementById("nome-loja-chat").textContent = `${nomeLoja} — Estoque`;
+  document.title = `Stocky — ${nomeLoja}`;
+  adicionarBolhaSistema(`Loja renomeada para "${nomeLoja}".`);
 });
 
 function gerarSlug(nome){
- let base = normalizar(nome).replace(/[^a-z0-9\s]/g,"").trim().replace(/\s+/g,"_");
- if(!base) base = "produto";
- let slug = base;
- while(estoque[slug]){
- contadorSlug++;
- slug = `${base}_${contadorSlug}`;
- }
- return slug;
+  let base = normalizar(nome).replace(/[^a-z0-9\s]/g,"").trim().replace(/\s+/g,"_");
+  if(!base) base = "produto";
+  let slug = base;
+  while(estoque[slug]){
+    contadorSlug++;
+    slug = `${base}_${contadorSlug}`;
+  }
+  return slug;
 }
 
 document.getElementById("btn-add-produto").addEventListener("click", ()=>{
- const nomeInput = document.getElementById("input-novo-produto");
- const qtdInput = document.getElementById("input-nova-qtd");
- const minInput = document.getElementById("input-novo-minimo");
- const unidadeSelect = document.getElementById("select-nova-unidade");
-
- const nome = nomeInput.value.trim();
- const qtd = parseFloat(qtdInput.value);
- const minimo = parseFloat(minInput.value);
- const unidade = unidadeSelect.value;
-
- if(!nome){ nomeInput.focus(); return; }
- if(isNaN(qtd) || qtd < 0 || isNaN(minimo) || minimo < 0){ return; }
-
- const slug = gerarSlug(nome);
- estoque[slug] = {nome, qtd, unidade, minimo};
- renderTabela(slug);
- renderGrafico();
- adicionarBolhaSistema(`📦 Produto "${nome}" cadastrado: ${qtd} ${unidade} em estoque.`);
-
- nomeInput.value = "";
- qtdInput.value = "10";
- minInput.value = "3";
- nomeInput.focus();
+  const nomeInput = document.getElementById("input-novo-produto");
+  const qtdInput = document.getElementById("input-nova-qtd");
+  const minInput = document.getElementById("input-novo-minimo");
+  const unidadeSelect = document.getElementById("select-nova-unidade");
+  const nome = nomeInput.value.trim();
+  const qtd = parseFloat(qtdInput.value);
+  const minimo = parseFloat(minInput.value);
+  const unidade = unidadeSelect.value;
+  if(!nome){ nomeInput.focus(); return; }
+  if(isNaN(qtd) || qtd < 0 || isNaN(minimo) || minimo < 0){ return; }
+  const slug = gerarSlug(nome);
+  estoque[slug] = {nome, qtd, unidade, minimo};
+  renderTabela(slug);
+  renderGrafico();
+  adicionarBolhaSistema(`Produto "${nome}" cadastrado: ${qtd} ${unidade} em estoque.`);
+  nomeInput.value = "";
+  qtdInput.value = "10";
+  minInput.value = "3";
+  nomeInput.focus();
 });
 
 const roteiroTour = [
- "chegou 5kg de arroz",
- "vendeu 3un de leite",
- "acabou o café",
- "sobrou só 1kg de açúcar",
+  "chegou 5kg de arroz",
+  "vendeu 3un de leite",
+  "acabou o café",
+  "sobrou só 1kg de açúcar",
 ];
 
 document.getElementById("btn-tour").addEventListener("click", ()=>{
- const btn = document.getElementById("btn-tour");
- btn.disabled = true;
- btn.textContent = " Demonstração em andamento…";
-
- let i = 0;
- function proximoPasso(){
- if(i >= roteiroTour.length){
- btn.disabled = false;
- btn.textContent = " Ver demonstração automática";
- return;
- }
- processarMensagem(roteiroTour[i]);
- i++;
- setTimeout(proximoPasso, 1700);
- }
- proximoPasso();
+  const btn = document.getElementById("btn-tour");
+  btn.disabled = true;
+  btn.textContent = "Demonstração em andamento…";
+  let i = 0;
+  function proximoPasso(){
+    if(i >= roteiroTour.length){
+      btn.disabled = false;
+      btn.textContent = "Ver demonstração automática";
+      return;
+    }
+    processarMensagem(roteiroTour[i]);
+    i++;
+    setTimeout(proximoPasso, 1700);
+  }
+  proximoPasso();
 });
 
 renderTabela(null);
 renderGrafico();
 
 setTimeout(()=>{
- const cafe = estoque["cafe"];
- if(cafe && cafe.qtd <= cafe.minimo){
- registrarAlerta(cafe);
- adicionarBolhaSistema(` ATENÇÃO: ${cafe.nome} já está em risco de ruptura (${cafe.qtd} ${cafe.unidade}).`);
- adicionarBolhaSistema(` Sugestão: repor ~${cafe.minimo * 2} ${cafe.unidade} de ${cafe.nome} o quanto antes.`);
- }
- adicionarBolhaSistema("Assistente de estoque pronto. Mande texto, toque num áudio de exemplo ou clique em "Ver demonstração automática" ↓");
+  const cafe = estoque["cafe"];
+  if(cafe && cafe.qtd <= cafe.minimo){
+    registrarAlerta(cafe);
+    adicionarBolhaSistema(`ATENÇÃO: ${cafe.nome} já está em risco de ruptura (${cafe.qtd} ${cafe.unidade}).`);
+    adicionarBolhaSistema(`Sugestão: repor ~${cafe.minimo * 2} ${cafe.unidade} de ${cafe.nome} o quanto antes.`);
+  }
+  adicionarBolhaSistema("Assistente de estoque pronto. Mande texto, toque num áudio de exemplo ou clique em Ver demonstração automática.");
 }, 500);
 
 window.addEventListener('resize', ()=>{
- renderGrafico();
+  renderGrafico();
 });
 </script>
 </body>
